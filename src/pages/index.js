@@ -1,14 +1,11 @@
-import Image from "next/image";
+/* eslint-disable react-hooks/rules-of-hooks */
 import localFont from "next/font/local";
-import HeroSection from "@/components/HeroSection";
-import TrendingProducts from "@/components/TrendingProducts";
-import BestSellers from "@/components/BestSellers";
-import NewArrivals from "@/components/NewArrivals";
-import CustomerReviews from "@/components/CustomerReviews";
-import CategoryHighlights from "@/components/CategoryHighlights";
+
 import Navbar from "@/components/Navbar";
-import ScrollingText from "@/components/ScrollingText";
-import StayingProduct from "@/components/StayingProduct";
+import Homes from "@/components/Homes";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,17 +19,15 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+  // Move useEffect inside the functional component
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with your desired configuration
+  }, []);
+
   return (
-   <div>
-    <Navbar></Navbar>
-    <HeroSection></HeroSection>
-    <ScrollingText ></ScrollingText>
-    <StayingProduct></StayingProduct>
-    <TrendingProducts></TrendingProducts>
-    <BestSellers></BestSellers>
-    <NewArrivals></NewArrivals>
-    <CustomerReviews></CustomerReviews>
-    <CategoryHighlights></CategoryHighlights>
-   </div>
+    <div>
+      <Navbar />
+      <Homes />
+    </div>
   );
 }

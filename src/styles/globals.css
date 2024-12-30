@@ -28,7 +28,7 @@
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+
   
     /* Center slide text vertically */
     display: flex;
@@ -42,14 +42,21 @@
     height: 70%;
     object-fit: cover;
   } */
-  
+/*   
   .swiper-button-next::after {
-    color: orange;
-  }
+    color: rgb(0, 30, 255);
+    position: absolute;
+    
+    left: 20px;
+    font-size: 5px;
+}
+
   
   .swiper-button-prev::after {
     color: orange;
-  }
+    position: absolute;
+    bottom: 200%;
+  } */
   /* span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: #00c898;
   } */

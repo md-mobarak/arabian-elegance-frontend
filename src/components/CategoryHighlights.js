@@ -1,42 +1,145 @@
-import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+/* eslint-disable @next/next/no-img-element */
 
-export default function CategoryHighlights() {
-  const categoriesRef = useRef(null);
 
-  useEffect(() => {
-    const cards = categoriesRef.current.children;
-    gsap.from(cards, {
-      opacity: 0,
-      scale: 0.8,
-      stagger: 0.2,
-      duration: 1,
-      ease: 'power3.out',
-    });
-    
-    Array.from(cards).forEach(card => {
-      gsap.to(card, {
-        scale: 1.05,
-        duration: 0.3,
-        paused: true,
-        ease: 'power1.inOut',
-      }).reversed(true);
+ 
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { GiBeveledStar } from "react-icons/gi";
+import "swiper/css";
+import "swiper/css/navigation";
 
-      card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05 }).play());
-      card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1 }).reverse());
-    });
-  }, []);
+function CategoryHighlights() {
+  const categories = [
+    {
+      title: "Man Shirt",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-1.png",
+      description: "High-quality men's shirts in various styles.",
+    },
+    {
+      title: "Man Pants",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-2.png",
+      description: "Stylish and durable pants for all occasions.",
+    },
+    {
+      title: "Casual Wear",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-3.png",
+      description: "Comfortable casual wear for everyday use.",
+    },
+    {
+      title: "Formal Suit",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-4.png",
+      description: "Elegant formal suits for special occasions.",
+    },
+    {
+      title: "Sportswear",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-5.png",
+      description: "Comfortable sportswear for active lifestyles.",
+    },
+    {
+      title: "Winter Collection",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-6.png",
+      description: "Stay warm with our stylish winter collection.",
+    },
+    {
+      title: "Sportswear",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-5.png",
+      description: "Comfortable sportswear for active lifestyles.",
+    },
+    {
+      title: "Winter Collection",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-6.png",
+      description: "Stay warm with our stylish winter collection.",
+    },
+    {
+      title: "Sportswear",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-5.png",
+      description: "Comfortable sportswear for active lifestyles.",
+    },
+    {
+      title: "Winter Collection",
+      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-6.png",
+      description: "Stay warm with our stylish winter collection.",
+    },
+  ];
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   return (
-    <section ref={categoriesRef} className="py-16 bg-white">
-      <h2 className="text-3xl font-semibold mb-8">Category Highlights</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[1, 2, 3].map((item) => (
-          <div key={item} className="bg-gray-200 p-8 rounded-md shadow-lg transition-transform duration-200">
-            Category {item}
-          </div>
-        ))}
+    <div className=" lg:px-20 my-12 relative">
+      <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p>
+      <h1 className="text-4xl font-bold text-gray-600 font-serif">Browse Top Category</h1>
+
+      {/* Custom Navigation Buttons */}
+      <div className="absolute top-[30px] right-20 flex space-x-4 z-10">
+        <button
+          ref={prevRef}
+          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 
+                     hover:bg-gray-700 transition-all duration-500"
+        >
+          <GoArrowLeft className="text-3xl" />
+        </button>
+        <button
+          ref={nextRef}
+          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 
+                     hover:bg-gray-700 transition-all duration-500"
+        >
+          <GoArrowRight className="text-3xl" />
+        </button>
       </div>
-    </section>
+
+      {/* Swiper Slider */}
+      <Swiper
+        spaceBetween={30}
+        loop={true} // Enable infinite loop
+        autoplay={{
+          delay: 3000, // 2 seconds
+          disableOnInteraction: false, // Keep autoplay running even after interaction
+        }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onSwiper={(swiper) => {
+          // Attach custom navigation elements
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+        }}
+        className="mySwiper mt-6"
+      >
+        {categories.map((card, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative my-8 flex flex-col items-center space-y-4 shadow-xl">
+              <img
+                src={card.imgURL}
+                alt={card.title}
+                className="w-full h-full rounded-3xl border-2 border-black "
+              />
+              <h1 className="border border-gray-500 text-black bg-white px-4 py-3 rounded-full absolute bottom-[-20px] font-sans text-md font-bold">
+                {card.title}
+              </h1>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
+
+export default CategoryHighlights;
