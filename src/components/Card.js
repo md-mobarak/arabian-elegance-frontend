@@ -120,7 +120,7 @@ function Card({product,index}) {
     {/* Wishlist Icon */}
     <div
     
-    className="absolute top-3 right-3 bg-gray-100  p-2 rounded-full shadow hover:bg-pink-600 hover:text-white cursor-pointer z-10">
+    className="absolute top-3 right-3 bg-gray-100 text-orange-600 border border-orange-600  p-2 rounded-full shadow hover:bg-pink-600 hover:text-white cursor-pointer z-10">
       <FaHeart />
     </div>
 
@@ -138,10 +138,10 @@ function Card({product,index}) {
       ref={(el) => (hoverContentRef.current[index] = el)}
       className="absolute cursor-pointer inset-0 bg-black bg-opacity-20 opacity-0 flex justify-center items-center gap-3 transition-opacity pointer-events-none"
     >
-      <button className="bg-black text-sm  text-white border-2 border-white  p-2 rounded-full hover:bg-pink-600 hover:text-white">
+      <button className="bg-black text-sm cursor-pointer  text-white border-2 border-orange-600  p-2 rounded-full hover:bg-pink-600 hover:text-white">
         View Details
       </button>
-      <button className="bg-black text-sm text-white border-2 border-white  p-2 rounded-full hover:bg-pink-600 hover:text-white">
+      <button className="bg-black text-sm cursor-pointer  text-white border-2 border-orange-600   p-2 rounded-full hover:bg-pink-600 hover:text-white">
         Quick View
       </button>
     </div>
@@ -155,7 +155,7 @@ function Card({product,index}) {
         <span className="font-bold text-gray-800">{product.price}</span>
       </div>
       {/* Add to Cart Button */}
-      <button className="mt-2 bg-black text-white px-6 py-1 rounded-full hover:bg-pink-700 transition-all z-20 relative">
+      <button className="mt-2 bg-orange-600 text-white px-6 py-1 rounded-full hover:bg-pink-700 transition-all z-20 relative">
         Add to Cart 
       </button>
     </div>

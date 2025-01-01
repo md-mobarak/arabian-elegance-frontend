@@ -69,7 +69,11 @@ function CategoryHighlights() {
 
   return (
     <div className=" lg:px-20 my-12 relative">
-      <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p>
+      {/* <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p> */}
+      <div className='flex  items-center'>
+          <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
+          <p className='font-serif font-semibold text-pink-700'>Categories</p>
+      </div>
       <h1 className="text-4xl font-bold text-gray-600 font-serif">Browse Top Category</h1>
 
       {/* Custom Navigation Buttons */}

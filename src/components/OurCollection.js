@@ -676,12 +676,12 @@ function StylishCard() {
     <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
     <p className='font-serif font-semibold text-pink-700'>Feature Products</p>
 </div>
-<h2 className='text-4xl font-bold font-serif '>Our Features Collection</h2>
+<h2 className="text-4xl font-bold text-gray-600 font-serif">Our Features Collection</h2>
 </div>
-<div className='grid grid-cols-3 border gap-2 font-semibold border-black rounded-full px-3 py-2'>
-    <button className=' rounded-full hover:bg-[#13172B] hover:text-white transition-all duration-500'>New Products</button>
-    <button className=' rounded-full hover:bg-[#13172B] hover:text-white transition-all duration-500'>Sale Products</button>
-    <button className=' rounded-full hover:bg-[#13172B] hover:text-white transition-all duration-500'>Best Sellers</button>
+<div className='grid grid-cols-3 border-2 gap-2 font-semibold border-orange-600 rounded-full px-3 py-2'>
+    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>New Products</button>
+    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>Sale Products</button>
+    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>Best Sellers</button>
 </div>
 </div>
 
