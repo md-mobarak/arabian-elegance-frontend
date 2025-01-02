@@ -1,235 +1,503 @@
 /* eslint-disable @next/next/no-img-element */
 // /* eslint-disable @next/next/no-img-element */
-// import React from 'react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
+// import React, { useRef } from 'react';
 // import { FaQuoteRight } from 'react-icons/fa';
-// import { AiFillStar } from 'react-icons/ai';
-// import { gsap } from 'gsap';
-
-// const testimonials = [
-//   {
-//     id: 1,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Rhodes Jhon',
-//     rating: 5,
-//     text: 'This inflatable dragon costume seemed perfect for Halloween! But upon inflating, it became clear the wings were uneven, causing me to spin uncontrollably like a rogue pool float.',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/100', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-// ];
+// import { GiBeveledStar } from 'react-icons/gi';
+// import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper';
+// import 'swiper/css';
 
 // function Testimonials() {
-//   React.useEffect(() => {
-//     gsap.fromTo(
-//       '.swiper-slide',
-//       { opacity: 0, y: 50 },
-//       { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
-//     );
-//   }, []);
+//   const userReviews = [
+//     {
+//       name: "John Smith",
+//       rating: 4.5,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-1.png",
+//       description: "Excellent service! The product quality exceeded my expectations. Highly recommend.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     {
+//       name: "Sophia Brown",
+//       rating: 4.8,
+//       img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+//       description: "Great customer support and fast delivery. Will definitely shop here again.",
+//     },
+//     // Add more reviews as needed...
+//   ];
+
+//   const prevRef = useRef(null);
+//   const nextRef = useRef(null);
 
 //   return (
-//     <div className="my-16 px-6">
-//       {/* Heading */}
-//       <div className="text-center mb-8">
-//         <h2 className="text-2xl font-bold text-gray-700">What Our Clients Say About Us</h2>
+//     <div className=" lg:px-16 px-6 ">
+      
+//         <section className=''>
+//            {/* Header */}
+//       <div className="flex items-center mb-4 relative">
+//         <GiBeveledStar className="text-pink-700 font-bold text-xl" />
+//         <p className="font-serif font-semibold text-pink-700 ml-2">Categories</p>
 //       </div>
+//       <h1 className="text-4xl font-bold text-gray-600 font-serif mb-10">
+//         What Our Clients Say <br /> About Us
+//       </h1>
 
-//       {/* Swiper Carousel */}
-//       <Swiper
-//         spaceBetween={20}
-//         slidesPerView={1}
-//         breakpoints={{
-//           640: { slidesPerView: 1 },
-//           768: { slidesPerView: 2 },
+//       {/* Custom Navigation Buttons */}
+//       <div className="absolute  left-4 flex space-x-4 z-10 -translate-y-1/2">
+//         <button
+//           ref={prevRef}
+//           className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+//         >
+//           <GoArrowLeft className="text-3xl" />
+//         </button>
+//         <button
+//           ref={nextRef}
+//           className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+//         >
+//           <GoArrowRight className="text-3xl" />
+//         </button>
+//       </div>
+//     </section>
+    
+//         <div className=''>
+//              {/* Swiper Component */}
+//      <section className=''>
+//      <Swiper
+//         spaceBetween={30}
+//         loop={true}
+//         autoplay={{
+//           delay: 3000,
+//           disableOnInteraction: false,
 //         }}
-//         loop
-//         autoplay={{ delay: 5000 }}
-//         navigation
-//         className="swiper-container"
+//         navigation={{
+//           prevEl: prevRef.current,
+//           nextEl: nextRef.current,
+//         }}
+//         onSwiper={(swiper) => {
+//           swiper.params.navigation.prevEl = prevRef.current;
+//           swiper.params.navigation.nextEl = nextRef.current;
+//           swiper.navigation.init();
+//           swiper.navigation.update();
+//         }}
+//         modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+//         breakpoints={{
+//           640: {
+//             slidesPerView: 1,
+//           },
+//           1024: {
+//             slidesPerView: 3,
+//           },
+//         }}
+//         className="mySwiper my-10"
 //       >
-//         {testimonials.map((testimonial) => (
-//           <SwiperSlide key={testimonial.id}>
-//             <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-lg flex flex-col items-start">
-//               {/* Testimonial Text */}
-//               <p className="text-gray-500 text-sm mb-4">{testimonial.text}</p>
+//         {userReviews.map((review, index) => (
+//           <SwiperSlide key={index}>
+//             <div className="relative border-2 border-gray-600 rounded-2xl p-6 max-w-sm shadow-lg">
+//               {/* Review Content */}
+//               <p className="text-gray-600 mb-6">{review.description}</p>
 
-//               {/* Quote Icon */}
-//               <FaQuoteRight className="text-orange-400 text-2xl mb-4" />
-
-//               {/* Client Info */}
+//               {/* Reviewer Info */}
 //               <div className="flex items-center">
 //                 <img
-//                   src={testimonial.image}
-//                   alt={testimonial.name}
-//                   className="w-12 h-12 rounded-full mr-4"
+//                   src={review.img}
+//                   alt={review.name}
+//                   className="w-12 h-12 rounded-full border-2 border-gray-200"
 //                 />
-//                 <div>
-//                   <h3 className="font-bold text-gray-700">{testimonial.name}</h3>
-//                   <div className="flex items-center">
-//                     {[...Array(testimonial.rating)].map((_, index) => (
-//                       <AiFillStar key={index} className="text-red-500 text-lg" />
-//                     ))}
+//                 <div className="ml-4">
+//                   <h4 className="text-black font-semibold">{review.name}</h4>
+//                   <div className="flex text-pink-600">
+//                     {Array(5)
+//                       .fill(0)
+//                       .map((_, starIndex) => (
+//                         <span
+//                           key={starIndex}
+//                           className={
+//                             starIndex < Math.floor(review.rating)
+//                               ? "text-pink-600"
+//                               : "text-gray-300"
+//                           }
+//                         >
+//                           &#9733;
+//                         </span>
+//                       ))}
 //                   </div>
 //                 </div>
 //               </div>
+
+//               {/* Quotation Icon */}
+//               <FaQuoteRight className="absolute bottom-4 right-6 text-orange-500 text-3xl" />
 //             </div>
 //           </SwiperSlide>
 //         ))}
 //       </Swiper>
+//      </section>
+//         </div>
 //     </div>
 //   );
 // }
 
 // export default Testimonials;
 
+//    2nd testominial 
 
-// import React from 'react';
+
+// import React, { useRef, useEffect } from 'react';
+// import { FaQuoteRight } from 'react-icons/fa';
+// import { GiBeveledStar } from 'react-icons/gi';
+// import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 // import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Navigation } from 'swiper';
+// import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper';
 // import 'swiper/css';
 // import 'swiper/css/navigation';
-// import { FaQuoteRight } from 'react-icons/fa';
-// import { AiFillStar } from 'react-icons/ai';
-// import { gsap } from 'gsap';
-
-// const testimonials = [
-//   {
-//     id: 1,
-//     image: 'https://via.placeholder.com/80', // Replace with actual image URL
-//     name: 'Rhodes Jhon',
-//     rating: 5,
-//     text: 'This inflatable dragon costume seemed perfect for Halloween! But upon inflating, it became clear the wings were uneven, causing me to spin uncontrollably like a rogue pool float.',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/80', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/80', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://via.placeholder.com/80', // Replace with actual image URL
-//     name: 'Jane Doe',
-//     rating: 5,
-//     text: 'The costume was amazing and super fun to wear. It made my Halloween unforgettable, despite a few minor issues!',
-//   },
-// ];
+// import 'swiper/css/autoplay';
 
 // function Testimonials() {
-//   React.useEffect(() => {
-//     gsap.fromTo(
-//       '.swiper-slide',
-//       { opacity: 0, y: 30 },
-//       { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
-//     );
-//   }, []);
+//   const userReviews = [
+//     {
+//       name: "John Doe",
+//       rating: 4.5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Amazing product and service!",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//     {
+//       name: "Jane Smith",
+//       rating: 5,
+//       img: "https://via.placeholder.com/150",
+//       description: "Excellent quality! Highly recommend.",
+//     },
+//   ];
+
+//   const prevRef = useRef(null);
+//   const nextRef = useRef(null);
+
+//   useEffect(() => {
+//     if (prevRef.current && nextRef.current) {
+//       const swiperInstance = document.querySelector('.mySwiper')?.swiper;
+//       if (swiperInstance) {
+//         swiperInstance.params.navigation.prevEl = prevRef.current;
+//         swiperInstance.params.navigation.nextEl = nextRef.current;
+//         swiperInstance.navigation.init();
+//         swiperInstance.navigation.update();
+//       }
+//     }
+//   }, [prevRef, nextRef]);
 
 //   return (
-//     <div className="my-16 px-6 max-w-6xl mx-auto">
-//       {/* Heading */}
-//       <div className="text-center mb-10">
-//         <h3 className="text-xl font-serif font-semibold text-gray-600">What Our Clients Say About Us</h3>
-//       </div>
-
-//       {/* Swiper Carousel */}
-//       <Swiper
-//         spaceBetween={40}
-//         slidesPerView={1}
-//         navigation
-//         loop
-//         breakpoints={{
-//           768: { slidesPerView: 2 },
-//         }}
-//         modules={[Navigation]}
-//         className="swiper-container"
-//       >
-//         {testimonials.map((testimonial) => (
-//           <SwiperSlide key={testimonial.id}>
-//             <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 flex flex-col justify-between">
-//               {/* Quote */}
-//               <div className="flex items-center mb-4">
-//                 <FaQuoteRight className="text-orange-400 text-2xl mr-2" />
-//                 <p className="text-gray-600 text-sm">{testimonial.text}</p>
-//               </div>
-
-//               {/* Client Info */}
-//               <div className="flex items-center mt-4">
-//                 <img
-//                   src={testimonial.image}
-//                   alt={testimonial.name}
-//                   className="w-12 h-12 rounded-full mr-4"
-//                 />
-//                 <div>
-//                   <h3 className="text-gray-800 font-medium">{testimonial.name}</h3>
-//                   <div className="flex items-center">
-//                     {[...Array(testimonial.rating)].map((_, index) => (
-//                       <AiFillStar key={index} className="text-yellow-500 text-lg" />
-//                     ))}
+//     <div className="lg:px-20 px-6 flex   items-center  min-h-screen">
+//       <section className="w-full relative">
+//         <div className="flex items-center mb-4">
+//           <GiBeveledStar className="text-pink-700 font-bold text-xl" />
+//           <p className="font-serif font-semibold text-pink-700 ml-2">Categories</p>
+//         </div>
+//         <h1 className="text-4xl font-bold text-gray-600 font-serif mb-10">
+//           What Our Clients Say <br /> About Us
+//         </h1>
+//         <div className="absolute left-10 flex space-x-4 z-10 -translate-y-1/2">
+//           <button
+//             ref={prevRef}
+//             className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+//           >
+//             <GoArrowLeft className="text-3xl" />
+//           </button>
+//           <button
+//             ref={nextRef}
+//             className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+//           >
+//             <GoArrowRight className="text-3xl" />
+//           </button>
+//         </div>
+//       </section>
+//       <section className="w-full">
+//         <Swiper
+//           spaceBetween={30}
+//           loop={true}
+//           autoplay={{
+//             delay: 3000,
+//             disableOnInteraction: false,
+//           }}
+//           onSwiper={(swiper) => {
+//             swiper.params.navigation.prevEl = prevRef.current;
+//             swiper.params.navigation.nextEl = nextRef.current;
+//             swiper.navigation.init();
+//             swiper.navigation.update();
+//           }}
+//           modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+//           breakpoints={{
+//             640: {
+//               slidesPerView: 1,
+//             },
+//             1024: {
+//               slidesPerView: 3,
+//             },
+//           }}
+//           className="mySwiper my-10"
+//         >
+//           {userReviews.map((review, index) => (
+//             <SwiperSlide key={index}>
+//               <div className="relative border-2 border-gray-600 rounded-2xl p-6 max-w-sm shadow-lg">
+//                 <p className="text-gray-600 mb-6">{review.description}</p>
+//                 <div className="flex items-center">
+//                   <img
+//                     src={review.img}
+//                     alt={review.name}
+//                     className="w-12 h-12 rounded-full border-2 border-gray-200"
+//                   />
+//                   <div className="ml-4">
+//                     <h4 className="text-black font-semibold">{review.name}</h4>
+//                     <div className="flex text-pink-600">
+//                       {Array(5)
+//                         .fill(0)
+//                         .map((_, starIndex) => (
+//                           <span
+//                             key={starIndex}
+//                             className={
+//                               starIndex < Math.floor(review.rating)
+//                                 ? "text-pink-600"
+//                                 : "text-gray-300"
+//                             }
+//                           >
+//                             &#9733;
+//                           </span>
+//                         ))}
+//                     </div>
 //                   </div>
 //                 </div>
+//                 <FaQuoteRight className="absolute bottom-4 right-6 text-orange-500 text-3xl" />
 //               </div>
-//             </div>
-//           </SwiperSlide>
-//         ))}
-//       </Swiper>
-
-//       {/* Navigation Buttons */}
-//       <div className="flex justify-center items-center mt-8">
-//         <button
-//           className="swiper-button-prev w-10 h-10 rounded-full border border-gray-400 flex justify-center items-center text-gray-600 hover:bg-gray-100"
-//         >
-//           &lt;
-//         </button>
-//         <button
-//           className="swiper-button-next w-10 h-10 rounded-full border border-gray-400 flex justify-center items-center text-gray-600 hover:bg-gray-100 ml-4"
-//         >
-//           &gt;
-//         </button>
-//       </div>
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+//       </section>
 //     </div>
 //   );
 // }
 
 // export default Testimonials;
+
+// 3rd 
+
+import React, { useRef } from 'react';
+import { FaQuoteRight } from 'react-icons/fa';
+import { GiBeveledStar } from 'react-icons/gi';
+import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper';
+import 'swiper/css';
+
+function Testimonials() {
+  const userReviews = [
+    {
+      name: "John Smith",
+      rating: 4.5,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-1.png",
+      description: "Excellent service! The product quality exceeded my expectations. Highly recommend.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    {
+      name: "Sophia Brown",
+      rating: 4.8,
+      img: "https://html.pixelfit.agency/pesco/assets/images/testimonial/author-2.png",
+      description: "Great customer support and fast delivery. Will definitely shop here again.",
+    },
+    // Add more reviews as needed...
+  ];
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="flex flex-col  my-20 lg:flex-row lg:pt-10 px-6">
+      {/* Text & Navigation Buttons Section (30%) */}
+      <section className="lg:w-3/12 w-full lg:pr-8 mb-8 lg:mb-0 flex flex-col justify-between">
+        {/* Header */}
+        <div>
+          <div className="flex items-center mb-4">
+            <GiBeveledStar className="text-pink-700 font-bold text-xl" />
+            <p className="font-serif font-semibold text-pink-700 ml-2">Categories</p>
+          </div>
+          <h1 className="text-xl lg:text-3xl font-semibold text-gray-600 font-serif mb-6">
+            What Our Clients Say About Us
+          </h1>
+        </div>
+
+        {/* Custom Navigation Buttons */}
+        <div className="flex space-x-4">
+          <button
+            ref={prevRef}
+            className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+          >
+            <GoArrowLeft className="text-3xl" />
+          </button>
+          <button
+            ref={nextRef}
+            className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
+          >
+            <GoArrowRight className="text-3xl" />
+          </button>
+        </div>
+      </section>
+
+      {/* Swiper Component (70%) */}
+      <section className="lg:w-9/12 w-full">
+        <Swiper
+          spaceBetween={20}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onSwiper={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          className="mySwiper"
+        >
+          {userReviews.map((review, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative border-2 border-gray-600 rounded-2xl p-6 max-w-sm mx-auto shadow-lg">
+                {/* Review Content */}
+                <p className="text-gray-600 mb-6" title={review.description}>{review.description.slice(0,50)}</p>
+
+                {/* Reviewer Info */}
+                <div className="flex items-center">
+                  <img
+                    src={review.img}
+                    alt={review.name}
+                    className="w-12 h-12 rounded-full border-2 border-gray-200"
+                  />
+                  <div className="ml-4">
+                    <h4 className="text-black font-semibold">{review.name}</h4>
+                    <div className="flex text-pink-600">
+                      {Array(5)
+                        .fill(0)
+                        .map((_, starIndex) => (
+                          <span
+                            key={starIndex}
+                            className={
+                              starIndex < Math.floor(review.rating)
+                                ? "text-pink-600"
+                                : "text-gray-300"
+                            }
+                          >
+                            &#9733;
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quotation Icon */}
+                <FaQuoteRight className="absolute bottom-4 right-6 text-orange-500 text-3xl" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+    </div>
+  );
+}
+
+export default Testimonials;

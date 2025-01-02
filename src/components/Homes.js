@@ -9,6 +9,7 @@ import WorkProcessing from './WorkProcessing'
 import TrendingProducts from './TrendingProducts'
 import Testimonials from './Testimonials'
 import OfferCard from './OfferCard'
+import Blogs from './Blogs'
 
 function Homes() {
   return (
@@ -22,7 +23,9 @@ function Homes() {
     <WorkProcessing></WorkProcessing>
     <TrendingProducts></TrendingProducts>
     <OfferCard></OfferCard>
-    {/* <Testimonials></Testimonials> */}
+    <Testimonials></Testimonials>
+    <Blogs></Blogs>
+
     </div>
   )
 }

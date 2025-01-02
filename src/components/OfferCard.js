@@ -1,34 +1,84 @@
+// /* eslint-disable @next/next/no-img-element */
+// import React from 'react'
+// import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
+// import '@leenguyen/react-flip-clock-countdown/dist/index.css';
+
+// function OfferCard() {
+//   return (
+// <div className='px-12 lg:my-20 my-10'>
+// <div className='grid  flex-col-reverse lg:grid-cols-2 border-2 rounded-3xl border-gray-600 pt-6 pr-4'>
+
+// <section className='flex justify-center items-center'>
+//     <div>
+//         <div className='my-6'>
+//             <h1 className='text-center text-4xl font-serif font-bold'>Hurry Up! Offer ends in. <br/> <span className='text-pink-600'>Get
+//             UP TO 80% OFF</span></h1>
+//         </div>
+//     <FlipClockCountdown to={new Date().getTime() + 24 * 3600 * 1000 + 5000} />
+//     <div className='flex justify-center'>
+//     <button className="mt-4 px-6 md:px-8 py-2 md:py-3 bg-black text-white rounded-full hover:bg-pink-600">
+//                 Shop Now
+//      </button>
+//     </div>
+//     </div>
+     
+//     </section>
+//     <section>
+// <img src="https://html.pixelfit.agency/pesco/assets/images/banner/deal-1.png" alt=""/>
+//     </section>
+//    </div>
+// </div>
+//   )
+// }
+
+// export default OfferCard
+
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
 import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 
 function OfferCard() {
-  return (
-<div className='px-12 lg:my-20 my-10'>
-<div className='grid  flex-col-reverse lg:grid-cols-2 border-2 rounded-3xl border-gray-600 pt-6 pr-4'>
+  const [isClient, setIsClient] = useState(false);
+  const offerEndsIn = new Date().getTime() + 24 * 3600 * 1000 + 5000; // Set offer countdown
 
-<section className='flex justify-center items-center'>
-    <div>
-        <div className='my-6'>
-            <h1 className='text-center text-4xl font-serif font-bold'>Hurry Up! Offer ends in. <br/> Get
-            UP TO 80% OFF</h1>
-        </div>
-    <FlipClockCountdown to={new Date().getTime() + 24 * 3600 * 1000 + 5000} />
-    <div className='flex justify-center'>
-    <button className="mt-4 px-6 md:px-8 py-2 md:py-3 bg-black text-white rounded-full hover:bg-pink-600">
-                Shop Now
-     </button>
+  useEffect(() => {
+    // Set isClient to true after hydration
+    setIsClient(true);
+  }, []);
+
+  return (
+    <div className="px-6 lg:px-12 my-10 lg:my-20">
+      <div className="grid lg:grid-cols-2 border-2 border-gray-600 rounded-3xl overflow-hidden">
+        {/* Offer Text Section */}
+        <section className="flex flex-col justify-center items-center bg-gray-50 p-6">
+           <h3 className='text-center font-semibold text-xl my-3'>Deal of the Week</h3>
+          <h1 className="text-center text-2xl lg:text-4xl font-serif font-bold mb-6">
+            Hurry Up! Offer ends in. <br />
+            <span className="text-pink-600">Get UP TO 80% OFF</span>
+          </h1>
+
+          {/* Only render FlipClockCountdown on the client */}
+          {isClient && (
+            <FlipClockCountdown to={offerEndsIn} className="mb-6" />
+          )}
+
+          <button className="px-6 md:px-8 py-2 md:py-3 bg-black text-white rounded-full hover:bg-pink-600 transition duration-300">
+            Shop Now
+          </button>
+        </section>
+
+        {/* Image Section */}
+        <section className="bg-white">
+          <img
+            src="https://html.pixelfit.agency/pesco/assets/images/banner/deal-1.png"
+            alt="Offer Banner"
+            className="w-full h-full object-cover"
+          />
+        </section>
+      </div>
     </div>
-    </div>
-     
-    </section>
-    <section>
-<img src="https://html.pixelfit.agency/pesco/assets/images/banner/deal-1.png" alt=""/>
-    </section>
-   </div>
-</div>
-  )
+  );
 }
 
-export default OfferCard
+export default OfferCard;
