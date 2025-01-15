@@ -54,7 +54,7 @@ import React, { useEffect, useRef } from "react";
 function ScrollingText() {
   const textWrapperRef = useRef(null);
 
-  const items = ["Shirt", "Jeans", "Blazer", "Jacket", "Women", "Kids", "T-Shirt"]; // Dynamic text items
+  const items = ["Shirt", "Jeans", "Blazer", "Jacket", "Women", "Kids", "T-Shirt" ,"Blazer", "Jacket", "Women", "Kids", "T-Shirt"]; // Dynamic text items
 
   useEffect(() => {
     // Import GSAP dynamically to avoid server-side errors

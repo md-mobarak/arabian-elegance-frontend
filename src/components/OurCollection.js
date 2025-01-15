@@ -599,6 +599,15 @@ function StylishCard() {
       oldPrice: '$69.99',
       discount: '30% OFF',
       rating: 4.7,
+      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-6.png',
+    },
+    {
+      id: 2,
+      name: 'Stylish Jacket',
+      price: '$49.99',
+      oldPrice: '$69.99',
+      discount: '30% OFF',
+      rating: 4.7,
       img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-7.png',
     },
     {
