@@ -10,6 +10,7 @@ import TrendingProducts from './TrendingProducts'
 import Testimonials from './Testimonials'
 import OfferCard from './OfferCard'
 import Blogs from './Blogs'
+import OurNewsletter from './OurNewsletter'
 
 function Homes() {
   return (
@@ -25,7 +26,7 @@ function Homes() {
     <OfferCard></OfferCard>
     <Testimonials></Testimonials>
     <Blogs></Blogs>
-
+  <OurNewsletter></OurNewsletter>
     </div>
   )
 }
