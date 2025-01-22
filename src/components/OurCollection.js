@@ -694,7 +694,7 @@ function StylishCard() {
 </div>
 </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         {products.map((product, index) => (
         <Card key={index} product={product} index={index}></Card>
         ))}

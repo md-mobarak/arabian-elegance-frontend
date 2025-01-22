@@ -23,7 +23,7 @@ function Navbar() {
   return (
     <nav>
       {/* Top Navbar */}
-      <div className="container p-3 my-3 mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <div className="container lg:p-3 my-3 mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         {/* Logo */}
         <div className="flex items-center space-x-6">
           <div className="text-3xl font-bold text-gray-800">

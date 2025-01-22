@@ -600,386 +600,386 @@
 
 // 3rd 
 
-"use client"
+// "use client"
 
-import React, { useEffect, useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
-import { motion } from "framer-motion"
-import { FaAmazon, FaBookmark, FaStar } from "react-icons/fa"
-import { IoMdShare } from "react-icons/io"
-// import { Swiper, SwiperSlide } from "swiper/react"
-// import { Navigation, Autoplay } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/autoplay"
-import Swiper, { Autoplay, Navigation } from "swiper"
+// import React, { useEffect, useRef } from "react"
+// import Image from "next/image"
+// import Link from "next/link"
+// import { gsap } from "gsap"
+// import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+// import { motion } from "framer-motion"
+// import { FaAmazon, FaBookmark, FaStar } from "react-icons/fa"
+// import { IoMdShare } from "react-icons/io"
+// // import { Swiper, SwiperSlide } from "swiper/react"
+// // import { Navigation, Autoplay } from "swiper/modules"
+// import "swiper/css"
+// import "swiper/css/navigation"
+// import "swiper/css/autoplay"
+// import Swiper, { Autoplay, Navigation } from "swiper"
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
 
-// interface BlogDetailsProps {
-//   slug: string
+// // interface BlogDetailsProps {
+// //   slug: string
+// // }
+
+// export default function BlogDetails({ slug }) {
+//   const headerRef = useRef<HTMLDivElement>(null)
+//   const contentRef = useRef<HTMLDivElement>(null)
+//   const commentsRef = useRef<HTMLDivElement>(null)
+
+//   useEffect(() => {
+//     const header = headerRef.current
+//     const content = contentRef.current
+//     const comments = commentsRef.current
+
+//     if (header && content && comments) {
+//       gsap.from(header, {
+//         opacity: 0,
+//         y: -50,
+//         duration: 1,
+//         ease: "power3.out",
+//       })
+
+//       gsap.from(content.children, {
+//         opacity: 0,
+//         y: 50,
+//         stagger: 0.2,
+//         duration: 0.8,
+//         ease: "power3.out",
+//         scrollTrigger: {
+//           trigger: content,
+//           start: "top 80%",
+//         },
+//       })
+
+//       gsap.from(comments, {
+//         opacity: 0,
+//         y: 50,
+//         duration: 0.8,
+//         ease: "power3.out",
+//         scrollTrigger: {
+//           trigger: comments,
+//           start: "top 80%",
+//         },
+//       })
+//     }
+//   }, [])
+
+//   return (
+//     <article className="max-w-6xl mx-auto px-4 py-12">
+//       <header ref={headerRef} className="mb-12">
+//         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+//           The Future of AI: Transforming Industries and Everyday Life
+//         </h1>
+//         <div className="flex flex-wrap items-center text-gray-600 mb-4">
+//           <Image
+//             src="/placeholder.svg?height=40&width=40"
+//             alt="Author"
+//             width={40}
+//             height={40}
+//             className="rounded-full mr-3"
+//           />
+//           <span className="mr-4">By John Doe</span>
+//           <span className="mr-4">Published on May 15, 2023</span>
+//           <span className="flex items-center">
+//             <FaStar className="text-yellow-400 mr-1" />
+//             <FaStar className="text-yellow-400 mr-1" />
+//             <FaStar className="text-yellow-400 mr-1" />
+//             <FaStar className="text-yellow-400 mr-1" />
+//             <FaStar className="text-yellow-400 mr-1" />
+//             (128 reviews)
+//           </span>
+//         </div>
+//         <div className="flex flex-wrap items-center space-x-4">
+//           <motion.button
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//             className="px-4 py-2 bg-purple-600 text-white rounded-full flex items-center mb-2 sm:mb-0"
+//           >
+//             <FaBookmark className="mr-2" /> Save for later
+//           </motion.button>
+//           <motion.button
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//             className="px-4 py-2 bg-pink-600 text-white rounded-full flex items-center mb-2 sm:mb-0"
+//           >
+//             <IoMdShare className="mr-2" /> Share
+//           </motion.button>
+//         </div>
+//       </header>
+
+//       <div ref={contentRef} className="space-y-8">
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//           <Image
+//             src="/placeholder.svg?height=400&width=600"
+//             alt="AI Concept 1"
+//             width={600}
+//             height={400}
+//             className="rounded-xl shadow-lg"
+//           />
+//           <Image
+//             src="/placeholder.svg?height=400&width=600"
+//             alt="AI Concept 2"
+//             width={600}
+//             height={400}
+//             className="rounded-xl shadow-lg"
+//           />
+//         </div>
+
+//         <p className="text-xl leading-relaxed text-gray-700">
+//           Artificial Intelligence (AI) is rapidly evolving, reshaping industries and transforming our daily lives in
+//           ways we could only imagine a few years ago. From healthcare to finance, education to entertainment, AI's
+//           impact is far-reaching and profound.
+//         </p>
+
+//         <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
+//           <h3 className="text-lg font-semibold text-yellow-800">Pro Tip</h3>
+//           <p className="text-yellow-800">
+//             Stay ahead of the AI curve by continuously updating your skills. Check out our recommended courses below!
+//           </p>
+//         </div>
+
+//         <h2 className="text-3xl font-semibold mt-8 mb-4">The Rise of AI in Healthcare</h2>
+//         <p className="text-lg text-gray-700 mb-4">
+//           In the healthcare sector, AI is revolutionizing patient care, drug discovery, and medical imaging. Machine
+//           learning algorithms can now predict diseases with remarkable accuracy, often outperforming human doctors in
+//           certain diagnostic tasks.
+//         </p>
+
+//         <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-xl shadow-inner my-8">
+//           <h3 className="text-2xl font-semibold mb-4">Must-Have AI Tools for Healthcare Professionals</h3>
+//           <ul className="list-disc list-inside space-y-2">
+//             <li>AI-powered Diagnostic Assistants</li>
+//             <li>Predictive Analytics Platforms</li>
+//             <li>Automated Medical Imaging Analysis</li>
+//           </ul>
+//           <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+//             <motion.div
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="mt-6 bg-white text-purple-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
+//             >
+//               <FaAmazon className="mr-2" /> Shop AI Healthcare Tools on Amazon
+//             </motion.div>
+//           </Link>
+//         </div>
+
+//         {/* Google Ads Placeholder */}
+//         <div className="bg-gray-200 p-4 text-center rounded-xl">
+//           <p className="text-gray-600">Google Ads Placeholder</p>
+//         </div>
+
+//         <h2 className="text-3xl font-semibold mt-8 mb-4">AI in Finance: Smarter Investments, Safer Transactions</h2>
+//         <p className="text-lg text-gray-700 mb-4">
+//           The financial sector is leveraging AI to enhance fraud detection, automate trading, and provide personalized
+//           financial advice. AI-driven algorithms can analyze vast amounts of data in real-time, identifying patterns and
+//           insights that humans might miss.
+//         </p>
+
+//         <div className="bg-gradient-to-r from-blue-100 to-green-100 p-6 rounded-xl shadow-inner my-8">
+//           <h3 className="text-2xl font-semibold mb-4">Top AI-Powered Financial Tools</h3>
+//           <ul className="list-disc list-inside space-y-2">
+//             <li>Robo-Advisors for Automated Investing</li>
+//             <li>AI-Enhanced Fraud Detection Systems</li>
+//             <li>Predictive Analytics for Market Trends</li>
+//           </ul>
+//           <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+//             <motion.div
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="mt-6 bg-white text-blue-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
+//             >
+//               <FaAmazon className="mr-2" /> Explore AI Finance Tools on Amazon
+//             </motion.div>
+//           </Link>
+//         </div>
+
+//         <h2 className="text-3xl font-semibold mt-8 mb-4">The Future of AI: Challenges and Opportunities</h2>
+//         <p className="text-lg text-gray-700 mb-4">
+//           As AI continues to advance, we face both exciting opportunities and significant challenges. Ethical
+//           considerations, job displacement, and the need for new regulations are just a few of the issues we must
+//           address as we move into an AI-driven future.
+//         </p>
+
+//         <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-xl shadow-inner my-8">
+//           <h3 className="text-2xl font-semibold mb-4">Stay Ahead with These AI Resources</h3>
+//           <ul className="list-disc list-inside space-y-2">
+//             <li>Comprehensive Guide to AI Ethics</li>
+//             <li>AI and the Future of Work</li>
+//             <li>Latest AI Research and Breakthroughs</li>
+//           </ul>
+//           <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+//             <motion.div
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="mt-6 bg-white text-yellow-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
+//             >
+//               <FaAmazon className="mr-2" /> Discover AI Books and Courses on Amazon
+//             </motion.div>
+//           </Link>
+//         </div>
+
+//         <h2 className="text-3xl font-semibold mt-8 mb-4">Conclusion</h2>
+//         <p className="text-lg text-gray-700 mb-4">
+//           The AI revolution is here, and its impact will only grow in the coming years. By staying informed and adapting
+//           to these changes, we can harness the power of AI to create a better, more efficient world. The future is AI,
+//           and it's up to us to shape it responsibly.
+//         </p>
+//       </div>
+
+//       <div className="mt-12 p-6 bg-gray-100 rounded-xl">
+//         <h3 className="text-2xl font-semibold mb-4">Join the AI Revolution</h3>
+//         <p className="text-lg text-gray-700 mb-4">
+//           Stay updated with the latest in AI. Subscribe to our newsletter for cutting-edge insights, tutorials, and
+//           exclusive offers on AI tools and resources.
+//         </p>
+//         <form className="flex flex-col sm:flex-row gap-4">
+//           <input
+//             type="email"
+//             placeholder="Enter your email"
+//             className="flex-grow px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600"
+//           />
+//           <motion.button
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//             className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors duration-300"
+//           >
+//             Subscribe
+//           </motion.button>
+//         </form>
+//       </div>
+
+//       {/* Related Products Section */}
+//       <div className="mt-12">
+//         <h2 className="text-3xl font-semibold mb-6">Related Products You Might Like</h2>
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+//           {[1, 2, 3].map((product) => (
+//             <div
+//               key={product}
+//               className="border rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+//             >
+//               <Image
+//                 src={`/placeholder.svg?height=200&width=300`}
+//                 alt={`Product ${product}`}
+//                 width={300}
+//                 height={200}
+//                 className="rounded-lg mb-4"
+//               />
+//               <h3 className="text-xl font-semibold mb-2">AI Product {product}</h3>
+//               <p className="text-gray-600 mb-4">
+//                 Description of AI Product {product}. This amazing tool will revolutionize your workflow.
+//               </p>
+//               <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+//                 <motion.button
+//                   whileHover={{ scale: 1.05 }}
+//                   whileTap={{ scale: 0.95 }}
+//                   className="w-full bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300"
+//                 >
+//                   Check on Amazon
+//                 </motion.button>
+//               </Link>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Comment Section */}
+//       <div ref={commentsRef} className="mt-12">
+//         <h2 className="text-3xl font-semibold mb-6">Reader Comments</h2>
+//         <Swiper
+//           modules={[Navigation, Autoplay]}
+//           spaceBetween={30}
+//           slidesPerView={1}
+//           navigation
+//           autoplay={{ delay: 5000, disableOnInteraction: false }}
+//           breakpoints={{
+//             640: {
+//               slidesPerView: 2,
+//             },
+//             768: {
+//               slidesPerView: 3,
+//             },
+//           }}
+//         >
+//           {[1, 2, 3, 4, 5].map((comment) => (
+//             <SwiperSlide key={comment}>
+//               <div className="bg-white p-6 rounded-xl shadow-md">
+//                 <div className="flex items-center mb-4">
+//                   <Image
+//                     src={`/placeholder.svg?height=40&width=40`}
+//                     alt={`User ${comment}`}
+//                     width={40}
+//                     height={40}
+//                     className="rounded-full mr-3"
+//                   />
+//                   <div>
+//                     <h4 className="font-semibold">User {comment}</h4>
+//                     <p className="text-gray-500 text-sm">2 days ago</p>
+//                   </div>
+//                 </div>
+//                 <p className="text-gray-700">
+//                   Great article! I learned so much about AI and its impact on various industries. Can't wait to see what
+//                   the future holds.
+//                 </p>
+//               </div>
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+//       </div>
+
+//       {/* Comment Form */}
+//       <div className="mt-12">
+//         <h3 className="text-2xl font-semibold mb-4">Leave a Comment</h3>
+//         <form className="space-y-4">
+//           <div>
+//             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+//               Name
+//             </label>
+//             <input
+//               type="text"
+//               id="name"
+//               name="name"
+//               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+//             />
+//           </div>
+//           <div>
+//             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+//               Email
+//             </label>
+//             <input
+//               type="email"
+//               id="email"
+//               name="email"
+//               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+//             />
+//           </div>
+//           <div>
+//             <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
+//               Comment
+//             </label>
+//             <textarea
+//               id="comment"
+//               name="comment"
+//               rows={4}
+//               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+//             ></textarea>
+//           </div>
+//           <motion.button
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//             className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors duration-300"
+//           >
+//             Submit Comment
+//           </motion.button>
+//         </form>
+//       </div>
+
+//       {/* Google Ads Placeholder */}
+//       <div className="mt-12 bg-gray-200 p-4 text-center rounded-xl">
+//         <p className="text-gray-600">Google Ads Placeholder</p>
+//       </div>
+//     </article>
+//   )
 // }
-
-export default function BlogDetails({ slug }) {
-  const headerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const commentsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const header = headerRef.current
-    const content = contentRef.current
-    const comments = commentsRef.current
-
-    if (header && content && comments) {
-      gsap.from(header, {
-        opacity: 0,
-        y: -50,
-        duration: 1,
-        ease: "power3.out",
-      })
-
-      gsap.from(content.children, {
-        opacity: 0,
-        y: 50,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: content,
-          start: "top 80%",
-        },
-      })
-
-      gsap.from(comments, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: comments,
-          start: "top 80%",
-        },
-      })
-    }
-  }, [])
-
-  return (
-    <article className="max-w-6xl mx-auto px-4 py-12">
-      <header ref={headerRef} className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-          The Future of AI: Transforming Industries and Everyday Life
-        </h1>
-        <div className="flex flex-wrap items-center text-gray-600 mb-4">
-          <Image
-            src="/placeholder.svg?height=40&width=40"
-            alt="Author"
-            width={40}
-            height={40}
-            className="rounded-full mr-3"
-          />
-          <span className="mr-4">By John Doe</span>
-          <span className="mr-4">Published on May 15, 2023</span>
-          <span className="flex items-center">
-            <FaStar className="text-yellow-400 mr-1" />
-            <FaStar className="text-yellow-400 mr-1" />
-            <FaStar className="text-yellow-400 mr-1" />
-            <FaStar className="text-yellow-400 mr-1" />
-            <FaStar className="text-yellow-400 mr-1" />
-            (128 reviews)
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center space-x-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-purple-600 text-white rounded-full flex items-center mb-2 sm:mb-0"
-          >
-            <FaBookmark className="mr-2" /> Save for later
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-pink-600 text-white rounded-full flex items-center mb-2 sm:mb-0"
-          >
-            <IoMdShare className="mr-2" /> Share
-          </motion.button>
-        </div>
-      </header>
-
-      <div ref={contentRef} className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Image
-            src="/placeholder.svg?height=400&width=600"
-            alt="AI Concept 1"
-            width={600}
-            height={400}
-            className="rounded-xl shadow-lg"
-          />
-          <Image
-            src="/placeholder.svg?height=400&width=600"
-            alt="AI Concept 2"
-            width={600}
-            height={400}
-            className="rounded-xl shadow-lg"
-          />
-        </div>
-
-        <p className="text-xl leading-relaxed text-gray-700">
-          Artificial Intelligence (AI) is rapidly evolving, reshaping industries and transforming our daily lives in
-          ways we could only imagine a few years ago. From healthcare to finance, education to entertainment, AI's
-          impact is far-reaching and profound.
-        </p>
-
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
-          <h3 className="text-lg font-semibold text-yellow-800">Pro Tip</h3>
-          <p className="text-yellow-800">
-            Stay ahead of the AI curve by continuously updating your skills. Check out our recommended courses below!
-          </p>
-        </div>
-
-        <h2 className="text-3xl font-semibold mt-8 mb-4">The Rise of AI in Healthcare</h2>
-        <p className="text-lg text-gray-700 mb-4">
-          In the healthcare sector, AI is revolutionizing patient care, drug discovery, and medical imaging. Machine
-          learning algorithms can now predict diseases with remarkable accuracy, often outperforming human doctors in
-          certain diagnostic tasks.
-        </p>
-
-        <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-xl shadow-inner my-8">
-          <h3 className="text-2xl font-semibold mb-4">Must-Have AI Tools for Healthcare Professionals</h3>
-          <ul className="list-disc list-inside space-y-2">
-            <li>AI-powered Diagnostic Assistants</li>
-            <li>Predictive Analytics Platforms</li>
-            <li>Automated Medical Imaging Analysis</li>
-          </ul>
-          <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 bg-white text-purple-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <FaAmazon className="mr-2" /> Shop AI Healthcare Tools on Amazon
-            </motion.div>
-          </Link>
-        </div>
-
-        {/* Google Ads Placeholder */}
-        <div className="bg-gray-200 p-4 text-center rounded-xl">
-          <p className="text-gray-600">Google Ads Placeholder</p>
-        </div>
-
-        <h2 className="text-3xl font-semibold mt-8 mb-4">AI in Finance: Smarter Investments, Safer Transactions</h2>
-        <p className="text-lg text-gray-700 mb-4">
-          The financial sector is leveraging AI to enhance fraud detection, automate trading, and provide personalized
-          financial advice. AI-driven algorithms can analyze vast amounts of data in real-time, identifying patterns and
-          insights that humans might miss.
-        </p>
-
-        <div className="bg-gradient-to-r from-blue-100 to-green-100 p-6 rounded-xl shadow-inner my-8">
-          <h3 className="text-2xl font-semibold mb-4">Top AI-Powered Financial Tools</h3>
-          <ul className="list-disc list-inside space-y-2">
-            <li>Robo-Advisors for Automated Investing</li>
-            <li>AI-Enhanced Fraud Detection Systems</li>
-            <li>Predictive Analytics for Market Trends</li>
-          </ul>
-          <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 bg-white text-blue-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <FaAmazon className="mr-2" /> Explore AI Finance Tools on Amazon
-            </motion.div>
-          </Link>
-        </div>
-
-        <h2 className="text-3xl font-semibold mt-8 mb-4">The Future of AI: Challenges and Opportunities</h2>
-        <p className="text-lg text-gray-700 mb-4">
-          As AI continues to advance, we face both exciting opportunities and significant challenges. Ethical
-          considerations, job displacement, and the need for new regulations are just a few of the issues we must
-          address as we move into an AI-driven future.
-        </p>
-
-        <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-xl shadow-inner my-8">
-          <h3 className="text-2xl font-semibold mb-4">Stay Ahead with These AI Resources</h3>
-          <ul className="list-disc list-inside space-y-2">
-            <li>Comprehensive Guide to AI Ethics</li>
-            <li>AI and the Future of Work</li>
-            <li>Latest AI Research and Breakthroughs</li>
-          </ul>
-          <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 bg-white text-yellow-600 px-6 py-3 rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <FaAmazon className="mr-2" /> Discover AI Books and Courses on Amazon
-            </motion.div>
-          </Link>
-        </div>
-
-        <h2 className="text-3xl font-semibold mt-8 mb-4">Conclusion</h2>
-        <p className="text-lg text-gray-700 mb-4">
-          The AI revolution is here, and its impact will only grow in the coming years. By staying informed and adapting
-          to these changes, we can harness the power of AI to create a better, more efficient world. The future is AI,
-          and it's up to us to shape it responsibly.
-        </p>
-      </div>
-
-      <div className="mt-12 p-6 bg-gray-100 rounded-xl">
-        <h3 className="text-2xl font-semibold mb-4">Join the AI Revolution</h3>
-        <p className="text-lg text-gray-700 mb-4">
-          Stay updated with the latest in AI. Subscribe to our newsletter for cutting-edge insights, tutorials, and
-          exclusive offers on AI tools and resources.
-        </p>
-        <form className="flex flex-col sm:flex-row gap-4">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-grow px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600"
-          />
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors duration-300"
-          >
-            Subscribe
-          </motion.button>
-        </form>
-      </div>
-
-      {/* Related Products Section */}
-      <div className="mt-12">
-        <h2 className="text-3xl font-semibold mb-6">Related Products You Might Like</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((product) => (
-            <div
-              key={product}
-              className="border rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <Image
-                src={`/placeholder.svg?height=200&width=300`}
-                alt={`Product ${product}`}
-                width={300}
-                height={200}
-                className="rounded-lg mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">AI Product {product}</h3>
-              <p className="text-gray-600 mb-4">
-                Description of AI Product {product}. This amazing tool will revolutionize your workflow.
-              </p>
-              <Link href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300"
-                >
-                  Check on Amazon
-                </motion.button>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Comment Section */}
-      <div ref={commentsRef} className="mt-12">
-        <h2 className="text-3xl font-semibold mb-6">Reader Comments</h2>
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-            },
-            768: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {[1, 2, 3, 4, 5].map((comment) => (
-            <SwiperSlide key={comment}>
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <div className="flex items-center mb-4">
-                  <Image
-                    src={`/placeholder.svg?height=40&width=40`}
-                    alt={`User ${comment}`}
-                    width={40}
-                    height={40}
-                    className="rounded-full mr-3"
-                  />
-                  <div>
-                    <h4 className="font-semibold">User {comment}</h4>
-                    <p className="text-gray-500 text-sm">2 days ago</p>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Great article! I learned so much about AI and its impact on various industries. Can't wait to see what
-                  the future holds.
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* Comment Form */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-semibold mb-4">Leave a Comment</h3>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-            />
-          </div>
-          <div>
-            <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
-              Comment
-            </label>
-            <textarea
-              id="comment"
-              name="comment"
-              rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
-            ></textarea>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors duration-300"
-          >
-            Submit Comment
-          </motion.button>
-        </form>
-      </div>
-
-      {/* Google Ads Placeholder */}
-      <div className="mt-12 bg-gray-200 p-4 text-center rounded-xl">
-        <p className="text-gray-600">Google Ads Placeholder</p>
-      </div>
-    </article>
-  )
-}
 
