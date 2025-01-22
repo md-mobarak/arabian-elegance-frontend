@@ -65,7 +65,7 @@ function WorkProcessing() {
           <GiBeveledStar className="text-pink-700 font-bold text-xl" />
         </p>
       </div>
-      <h1 className="text-center text-5xl font-bold font-serif text-gray-700 mb-12">
+      <h1 className="text-center lg:text-5xl text-2xl font-bold font-serif text-gray-700 mb-12">
         How it Work Processing
       </h1>
 

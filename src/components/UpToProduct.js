@@ -1,11 +1,13 @@
-
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 
 function UpToProduct() {
-
+  useEffect(() => {
+    // Initialize AOS animations
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
+  }, []);
 
   return (
     <div className="bg-gray-50 lg:my-24 lg:p-8 flex justify-center items-center">
@@ -15,8 +17,7 @@ function UpToProduct() {
           <div
             className="bg-white rounded-3xl shadow-xl p-6 flex flex-col md:flex-row items-center gap-4 relative border border-black"
             data-aos="fade-up-right" 
-             data-aos-duration="1000"
-            // AOS animation
+            data-aos-duration="1000"
           >
             <div className="text-center md:text-left">
               <p className="text-gray-500 uppercase text-xl md:text-3xl">Up To</p>
@@ -38,8 +39,8 @@ function UpToProduct() {
           {/* Card 2 */}
           <div
             className="bg-white rounded-3xl shadow-xl p-6 flex flex-col md:flex-row items-center gap-4 relative border border-black"
-            data-aos="fade-up-left" // AOS animation
-             data-aos-duration="1000"
+            data-aos="fade-up-left"
+            data-aos-duration="1000"
           >
             <div className="text-center md:text-left">
               <p className="text-gray-500 uppercase text-xl md:text-3xl">Up To</p>

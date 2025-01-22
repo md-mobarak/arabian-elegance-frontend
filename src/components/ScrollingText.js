@@ -48,13 +48,25 @@
 
 // export default ScrollingText;
 
-
 import React, { useEffect, useRef } from "react";
 
 function ScrollingText() {
   const textWrapperRef = useRef(null);
 
-  const items = ["Shirt", "Jeans", "Blazer", "Jacket", "Women", "Kids", "T-Shirt" ,"Blazer", "Jacket", "Women", "Kids", "T-Shirt"]; // Dynamic text items
+  const items = [
+    "Shirt",
+    "Jeans",
+    "Blazer",
+    "Jacket",
+    "Women",
+    "Kids",
+    "T-Shirt",
+    "Blazer",
+    "Jacket",
+    "Women",
+    "Kids",
+    "T-Shirt",
+  ]; // Dynamic text items
 
   useEffect(() => {
     // Import GSAP dynamically to avoid server-side errors
@@ -88,14 +100,16 @@ function ScrollingText() {
   }, []);
 
   return (
-    <div className="text-section my-20 h-[100px] flex items-center justify-center bg-gradient-to-r from-[#1d0961] via-[#060539] to-[#1d0961]">
+    <div className="text-section my-20 h-[100px] flex items-center justify-center bg-gradient-to-r from-[#1d0961] via-[#060539] to-[#1d0961] overflow-hidden">
       {/* Scrolling Text Wrapper */}
       <div
         ref={textWrapperRef}
-        className="wrapper text text-4xl font-bold tracking-wide text-white uppercase flex space-x-10"
+        className="wrapper text text-4xl md:text-5xl font-bold tracking-wide text-white uppercase flex space-x-10 whitespace-nowrap"
       >
         {items.map((item, index) => (
-          <span key={index}>{item}</span>
+          <span key={index} className="hover:scale-110 transition-transform duration-300">
+            {item}
+          </span>
         ))}
       </div>
     </div>
@@ -103,3 +117,4 @@ function ScrollingText() {
 }
 
 export default ScrollingText;
+

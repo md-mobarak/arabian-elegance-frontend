@@ -68,16 +68,16 @@ function CategoryHighlights() {
   const nextRef = useRef(null);
 
   return (
-    <div className=" lg:px-20 my-12 relative">
+    <div className=" lg:px-20 my-12 relative px-10">
       {/* <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p> */}
       <div className='flex  items-center'>
           <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
           <p className='font-serif font-semibold text-pink-700'>Categories</p>
       </div>
-      <h1 className="text-4xl font-bold text-gray-600 font-serif">Browse Top Category</h1>
+      <h1 className="lg:text-4xl text-xl font-bold text-gray-600 font-serif">Browse Top Category</h1>
 
       {/* Custom Navigation Buttons */}
-      <div className="absolute top-[30px] right-20 flex space-x-4 z-10">
+      <div className="absolute top-[30px] right-8 lg:right-20 md:right-20 flex space-x-4 z-10">
         <button
           ref={prevRef}
           className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 

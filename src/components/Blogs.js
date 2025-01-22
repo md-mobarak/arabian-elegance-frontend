@@ -116,7 +116,7 @@ const Blogs = () => {
   ];
 
   return (
-    <section className="bg-[#FFF7F0] py-16">
+    <section className="bg-[#FFF7F0] py-16 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-12">
@@ -143,7 +143,7 @@ const Blogs = () => {
           </div>
 
           {/* Small Blog Cards (4 Cards in 50%) */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {blogs.slice(1).map((blog) => (
               <div
                 key={blog.id}

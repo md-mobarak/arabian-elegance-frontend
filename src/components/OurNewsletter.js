@@ -11,7 +11,7 @@ function OurNewsletter() {
           {/* Text Section */}
       <div className="md:w-2/3 z-10 text-center md:text-left">
         <h3 className="text-lg font-semibold text-gray-800">Our Newsletter</h3>
-        <p className="mt-2 text-4xl font-bold text-gray-900">
+        <p className="mt-2 lg:text-4xl text-2xl font-bold text-gray-900">
           Get Weekly Update. Sign Up And Get Up To <span className="text-red-500">20% Off</span> Your <br></br> First Purchase
         </p>
       </div>

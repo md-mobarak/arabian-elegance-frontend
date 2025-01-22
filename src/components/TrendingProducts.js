@@ -68,7 +68,7 @@ function TrendingProducts() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   return (
-    <div className="lg:my-20 my-10 px-20">
+    <div className="lg:my-20 my-10 lg:px-20 px-10">
       {/* 1st section */}
       <div className="relative">
          {/* <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p> */}
@@ -76,10 +76,10 @@ function TrendingProducts() {
                   <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
                   <p className='font-serif font-semibold text-pink-700'>Categories</p>
               </div>
-              <h1 className="text-4xl font-bold text-gray-600 font-serif">Whats Trending Now</h1>
+              <h1 className="lg:text-4xl text-xl font-bold text-gray-600 font-serif">Whats Trending Now</h1>
         
               {/* Custom Navigation Buttons */}
-              <div className="absolute top-[30px] right-20 flex space-x-4 z-10">
+              <div className="absolute top-[30px] lg:right-20 right-[-20px] flex space-x-4 z-10">
                 <button
                   ref={prevRef}
                   className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 
@@ -123,7 +123,7 @@ function TrendingProducts() {
             slidesPerView: 1,
           },
           768: {
-            slidesPerView: 1,
+            slidesPerView: 2,
           },
           1024: {
             slidesPerView: 3,

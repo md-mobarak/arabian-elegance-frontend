@@ -677,24 +677,24 @@ function StylishCard() {
   ];
 
   return (
-    <div className="my-8 px-12">
+    <div className="my-8 lg:px-12 px-8">
      
 <div className='grid grid-cols-2 gap-5 lg:my-16' >
-<div >
+<div className='my-5'>
 <div className='flex  items-center'>
     <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
-    <p className='font-serif font-semibold text-pink-700'>Feature Products</p>
+    <p className='font-serif lg:font-semibold text-pink-700'>Feature Products</p>
 </div>
-<h2 className="text-4xl font-bold text-gray-600 font-serif">Our Features Collection</h2>
+<h2 className="lg:text-4xl font-bold text-gray-600 font-serif">Our Features Collection</h2>
 </div>
-<div className='grid grid-cols-3 border-2 gap-2 font-semibold border-orange-600 rounded-full px-3 py-2'>
-    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>New Products</button>
-    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>Sale Products</button>
-    <button className=' rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500'>Best Sellers</button>
+<div className='my-5 grid grid-cols-3 lg:border-2 gap-2  lg:font-semibold border-orange-600 rounded-full lg:px-3 lg:py-2 '>
+    <button className=' lg:rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500 lg:text-[16px] text-[10px] border lg:border-none rounded-xl'>New Products</button>
+    <button className=' lg:rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500 lg:text-[16px] text-[10px] border lg:border-none rounded-xl'>Sale Products</button>
+    <button className=' lg:rounded-full hover:bg-orange-600 hover:text-white transition-all duration-500 lg:text-[16px] text-[10px] border lg:border-none rounded-xl'>Best Sellers</button>
 </div>
 </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         {products.map((product, index) => (
         <Card key={index} product={product} index={index}></Card>
         ))}
