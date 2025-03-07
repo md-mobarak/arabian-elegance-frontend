@@ -9,6 +9,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['html.pixelfit.agency'], // Add the hostname here
+  },
   
   // Webpack Custom Configuration
   webpack: (config) => {
@@ -23,3 +26,11 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+
+// }
+
+// module.exports = nextConfig

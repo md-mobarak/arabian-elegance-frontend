@@ -28,7 +28,9 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Homes />
+  <div className="">
+  <Homes />
+  </div>
       <Footer/>
     </div>
   );

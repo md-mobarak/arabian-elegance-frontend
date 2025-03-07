@@ -1,5 +1,7 @@
 // "use client";
 
+// const { Thumbs } = require("swiper")
+
 // import React, { useEffect, useRef } from "react";
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -983,3 +985,521 @@
 //   )
 // }
 
+
+
+
+
+// 3rd component 
+
+
+// import Head from "next/head";
+// import { useRouter } from "next/router";
+
+// const BlogDetails = ({ blog }) => {
+//   const router = useRouter();
+
+//   if (router.isFallback) {
+//     return <p>Loading...</p>;
+//   }
+
+//   return (
+//     <>
+//       {/* Dynamic Metadata for SEO */}
+//       <Head>
+//         <title>{blog.title}</title>
+//         <meta name="description" content={blog.description} />
+//         <meta name="keywords" content={`${blog.title}, best products, reviews, ${blog.products.map((p) => p.name).join(", ")}`} />
+//         <meta name="author" content="Your Name" />
+//         <link rel="canonical" href={`https://yourwebsite.com/blog/${encodeURIComponent(blog.title)}`} />
+//         <meta property="og:title" content={blog.title} />
+//         <meta property="og:description" content={blog.description} />
+//         <meta property="og:image" content={`https://yourwebsite.com/images/${blog.images[0]}`} />
+//         <meta property="og:url" content={`https://yourwebsite.com/blog/${encodeURIComponent(blog.title)}`} />
+//         <meta property="og:type" content="article" />
+//         <meta property="og:site_name" content="Your Blog Name" />
+//         <meta name="twitter:card" content="summary_large_image" />
+//         <meta name="twitter:title" content={blog.title} />
+//         <meta name="twitter:description" content={blog.description} />
+//         <meta name="twitter:image" content={`https://yourwebsite.com/images/${blog.images[0]}`} />
+//       </Head>
+
+//       {/* Main Blog Content */}
+//       <div className="max-w-4xl mx-auto px-6 py-10">
+//         {/* Blog Title */}
+//         <h1 className="text-4xl font-bold mb-6 text-center">{blog.title}</h1>
+//         <p className="text-lg mb-6 text-gray-700">{blog.description}</p>
+
+//         {/* Blog Images */}
+//         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+//           {blog.images.map((image, index) => (
+//             <img
+//               key={index}
+//               src={`/images/${image}`}
+//               alt={`Blog image ${index + 1}`}
+//               className="rounded-lg shadow-md w-full h-48 object-cover"
+//             />
+//           ))}
+//         </div>
+
+//         {/* Products Section */}
+//         <div className="mb-10">
+//           <h2 className="text-2xl font-semibold mb-4">Products</h2>
+//           <div className="space-y-6">
+//             {blog.products.map((product, index) => (
+//               <article
+//                 key={index}
+//                 className="p-6 border rounded-lg shadow hover:shadow-lg transition duration-300"
+//               >
+//                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+//                 <p className="text-gray-700 mb-2">{product.price}</p>
+//                 <ul className="mb-2 list-disc list-inside text-gray-600">
+//                   {product.features.map((feature, featureIndex) => (
+//                     <li key={featureIndex}>{feature}</li>
+//                   ))}
+//                 </ul>
+//                 <p className="text-gray-500 italic mb-2">
+//                   Pros: {product.pros.join(", ")}
+//                 </p>
+//                 <p className="text-gray-500 italic mb-4">
+//                   Cons: {product.cons.join(", ")}
+//                 </p>
+//                 <p className="text-gray-700 mb-4">{product.reviewScript}</p>
+//                 <a
+//                   href={product.affiliateLink}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+//                 >
+//                   Buy Now
+//                 </a>
+//               </article>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Additional Sections */}
+//         {blog.additionalSections.map((section, index) => (
+//           <section key={index} className="mb-8">
+//             <h2 className="text-2xl font-semibold mb-4">{section.sectionTitle}</h2>
+//             {Array.isArray(section.content) ? (
+//               <ul className="list-disc list-inside text-gray-700 space-y-2">
+//                 {section.content.map((item, contentIndex) => (
+//                   <li key={contentIndex}>
+//                     <strong>{item.question}</strong>: {item.answer}
+//                   </li>
+//                 ))}
+//               </ul>
+//             ) : (
+//               <p className="text-gray-700">{section.content}</p>
+//             )}
+//           </section>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default BlogDetails;
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [], // No pre-rendered paths; fallback enabled
+//     fallback: true,
+//   };
+// }
+
+// export async function getStaticProps({ params }) {
+//   const blogs = [
+//     /* Add your JSON data here */
+//   ];
+
+//   const blog = blogs.find((b) => b.title === params.title);
+
+//   if (!blog) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: { blog },
+//   };
+// }
+
+
+
+
+// 4th component 
+
+
+// import Head from "next/head";
+
+// const BlogDetails = () => {
+//   const blog = {
+//     title: "Top 5 Gadgets of 2025 for Tech Enthusiasts",
+//     description: "Discover the best gadgets of 2025 that are perfect for tech enthusiasts. Explore features, reviews, pros, and cons to make an informed choice.",
+//     images: ["gadget1.jpg", "gadget2.jpg", "gadget3.jpg"],
+//     products: [
+//       {
+//         name: "Smartwatch Pro X",
+//         price: "$299",
+//         features: ["Long battery life", "Advanced health tracking", "Customizable watch faces"],
+//         pros: ["Durable", "Lightweight", "Accurate tracking"],
+//         cons: ["Limited app options", "No cellular support"],
+//         reviewScript: "The Smartwatch Pro X stands out with its sleek design and accurate health tracking, making it a great choice for fitness enthusiasts.",
+//         affiliateLink: "https://example.com/smartwatch-pro-x",
+//       },
+//       {
+//         name: "Noise-Canceling Headphones",
+//         price: "$199",
+//         features: ["Superior sound quality", "Active noise cancelation", "Comfortable fit"],
+//         pros: ["Excellent noise cancelation", "High-quality audio"],
+//         cons: ["Bulky design", "No waterproofing"],
+//         reviewScript: "With active noise cancelation and superior sound, these headphones are a must-have for music lovers.",
+//         affiliateLink: "https://example.com/noise-canceling-headphones",
+//       },
+//     ],
+//     additionalSections: [
+//       {
+//         sectionTitle: "FAQ",
+//         content: [
+//           { question: "What is the best gadget of 2025?", answer: "Smartwatch Pro X is considered one of the top gadgets for its features and value." },
+//           { question: "Are these gadgets suitable for daily use?", answer: "Yes, all gadgets mentioned are designed for everyday usability." },
+//         ],
+//       },
+//     ],
+//   };
+
+//   return (
+//     <>
+//       {/* SEO Metadata */}
+//       <Head>
+//         <title>{blog.title}</title>
+//         <meta name="description" content={blog.description} />
+//         <meta name="keywords" content={`${blog.title}, tech gadgets 2025, best gadgets`} />
+//         <link rel="canonical" href={`https://yourwebsite.com/blog/top-5-gadgets-of-2025`} />
+//         <meta property="og:title" content={blog.title} />
+//         <meta property="og:description" content={blog.description} />
+//         <meta property="og:image" content={`https://yourwebsite.com/images/${blog.images[0]}`} />
+//         <meta property="og:url" content={`https://yourwebsite.com/blog/top-5-gadgets-of-2025`} />
+//         <meta property="og:type" content="article" />
+//         <meta property="og:site_name" content="Tech Blog" />
+//         <meta name="twitter:card" content="summary_large_image" />
+//         <meta name="twitter:title" content={blog.title} />
+//         <meta name="twitter:description" content={blog.description} />
+//         <meta name="twitter:image" content={`https://yourwebsite.com/images/${blog.images[0]}`} />
+//       </Head>
+
+//       {/* Blog Content */}
+//       <div className="max-w-4xl mx-auto px-6 py-10">
+//         {/* Blog Title */}
+//         <h1 className="text-4xl font-bold mb-6 text-center">{blog.title}</h1>
+//         <p className="text-lg mb-6 text-gray-700">{blog.description}</p>
+
+//         {/* Blog Images */}
+//         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+//           {blog.images.map((image, index) => (
+//             <img
+//               key={index}
+//               src={`/images/${image}`}
+//               alt={`Gadget ${index + 1}`}
+//               className="rounded-lg shadow-md w-full h-48 object-cover"
+//             />
+//           ))}
+//         </div>
+
+//         {/* Products Section */}
+//         <div className="mb-10">
+//           <h2 className="text-2xl font-semibold mb-4">Products</h2>
+//           <div className="space-y-6">
+//             {blog.products.map((product, index) => (
+//               <article
+//                 key={index}
+//                 className="p-6 border rounded-lg shadow hover:shadow-lg transition duration-300"
+//               >
+//                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+//                 <p className="text-gray-700 mb-2">{product.price}</p>
+//                 <ul className="mb-2 list-disc list-inside text-gray-600">
+//                   {product.features.map((feature, featureIndex) => (
+//                     <li key={featureIndex}>{feature}</li>
+//                   ))}
+//                 </ul>
+//                 <p className="text-gray-500 italic mb-2">
+//                   Pros: {product.pros.join(", ")}
+//                 </p>
+//                 <p className="text-gray-500 italic mb-4">
+//                   Cons: {product.cons.join(", ")}
+//                 </p>
+//                 <p className="text-gray-700 mb-4">{product.reviewScript}</p>
+//                 <a
+//                   href={product.affiliateLink}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+//                 >
+//                   Buy Now
+//                 </a>
+//               </article>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Additional Sections */}
+//         {blog.additionalSections.map((section, index) => (
+//           <section key={index} className="mb-8">
+//             <h2 className="text-2xl font-semibold mb-4">{section.sectionTitle}</h2>
+//             {Array.isArray(section.content) ? (
+//               <ul className="list-disc list-inside text-gray-700 space-y-2">
+//                 {section.content.map((item, contentIndex) => (
+//                   <li key={contentIndex}>
+//                     <strong>{item.question}</strong>: {item.answer}
+//                   </li>
+//                 ))}
+//               </ul>
+//             ) : (
+//               <p className="text-gray-700">{section.content}</p>
+//             )}
+//           </section>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default BlogDetails;
+
+
+// "use client"
+
+// import { useEffect, useRef } from "react"
+// import Head from "next/head"
+// import Image from "next/image"
+// import { gsap } from "gsap"
+// import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+// gsap.registerPlugin(ScrollTrigger)
+
+// const BlogDetails = () => {
+//   const blog = {
+//     title: "Top 5 Gadgets of 2025 for Tech Enthusiasts",
+//     description:
+//       "Discover the best gadgets of 2025 that are perfect for tech enthusiasts. Explore features, reviews, pros, and cons to make an informed choice.",
+//     images: ["https://html.pixelfit.agency/pesco/assets/images/blog/blog-sm-1.png", "https://html.pixelfit.agency/pesco/assets/images/blog/blog-sm-2.png", "https://html.pixelfit.agency/pesco/assets/images/blog/blog-sm-3.png"],
+//     products: [
+//       {
+//         name: "Smartwatch Pro X",
+//         price: "$299",
+//         features: ["Long battery life", "Advanced health tracking", "Customizable watch faces"],
+//         pros: ["Durable", "Lightweight", "Accurate tracking"],
+//         cons: ["Limited app options", "No cellular support"],
+//         reviewScript:
+//           "The Smartwatch Pro X stands out with its sleek design and accurate health tracking, making it a great choice for fitness enthusiasts.",
+//         affiliateLink: "https://example.com/smartwatch-pro-x",
+//       },
+//       {
+//         name: "Noise-Canceling Headphones",
+//         price: "$199",
+//         features: ["Superior sound quality", "Active noise cancelation", "Comfortable fit"],
+//         pros: ["Excellent noise cancelation", "High-quality audio"],
+//         cons: ["Bulky design", "No waterproofing"],
+//         reviewScript:
+//           "With active noise cancelation and superior sound, these headphones are a must-have for music lovers.",
+//         affiliateLink: "https://example.com/noise-canceling-headphones",
+//       },
+//     ],
+//     additionalSections: [
+//       {
+//         sectionTitle: "FAQ",
+//         content: [
+//           {
+//             question: "What is the best gadget of 2025?",
+//             answer: "Smartwatch Pro X is considered one of the top gadgets for its features and value.",
+//           },
+//           {
+//             question: "Are these gadgets suitable for daily use?",
+//             answer: "Yes, all gadgets mentioned are designed for everyday usability.",
+//           },
+//         ],
+//       },
+//     ],
+//   }
+
+//   const titleRef = useRef(null)
+//   const imagesRef = useRef(null)
+//   const productsRef = useRef(null)
+//   const faqRef = useRef(null)
+
+// //   useEffect(() => {
+// //     // Title animation
+// //     gsap.from(titleRef?.current, {
+// //       y: -50,
+// //       opacity: 0,
+// //       duration: 1,
+// //       ease: "power3.out",
+// //     })
+
+// //     // Images animation
+// //     gsap.from(imagesRef?.current?.children, {
+// //       opacity: 0,
+// //       y: 50,
+// //       stagger: 0.2,
+// //       duration: 0.8,
+// //       ease: "power3.out",
+// //       scrollTrigger: {
+// //         trigger: imagesRef?.current,
+// //         start: "top 80%",
+// //       },
+// //     })
+
+// //     // Products animation
+// //     gsap.from(productsRef?.current?.children, {
+// //       opacity: 0,
+// //       y: 50,
+// //       stagger: 0.3,
+// //       duration: 0.8,
+// //       ease: "power3.out",
+// //       scrollTrigger: {
+// //         trigger: productsRef?.current,
+// //         start: "top 80%",
+// //       },
+// //     })
+
+// //     // FAQ animation
+// //     gsap.from(faqRef?.current?.children, {
+// //       opacity: 0,
+// //       y: 20,
+// //       stagger: 0.2,
+// //       duration: 0.6,
+// //       ease: "power3.out",
+// //       scrollTrigger: {
+// //         trigger: faqRef?.current,
+// //         start: "top 80%",
+// //       },
+// //     })
+// //   }, [])
+
+//   return (
+//     <>
+//       <Head>
+//         <title>{blog.title}</title>
+//         <meta name="description" content={blog.description} />
+//         <meta name="keywords" content={`${blog.title}, tech gadgets 2025, best gadgets`} />
+//         <meta property="og:title" content={blog.title} />
+//         <meta property="og:description" content={blog.description} />
+//         <meta property="og:image" content="/images/gadget1.jpg" />
+//         <meta property="og:url" content="https://yourwebsite.com/blog/top-5-gadgets-of-2025" />
+//         <meta name="twitter:card" content="summary_large_image" />
+//       </Head>
+
+//       <div className="min-h-screen ">
+//         <div className="max-w-4xl mx-auto px-6 py-16">
+//           <h1
+//             // ref={titleRef}
+//             className="text-5xl font-extrabold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600"
+//           >
+//             {blog.title}
+//           </h1>
+//           <p className="text-xl mb-12 text-gray-700 text-center leading-relaxed">{blog.description}</p>
+
+//           <div
+//         //    ref={imagesRef}
+//             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+//             {blog.images.map((image, index) => (
+//               <div
+//                 key={index}
+//                 className="relative h-64 rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 will-change-transform"
+//               >
+//                 <Image
+//                   src={image}
+//                   alt={`Gadget ${index + 1}`}
+//                   layout="fill"
+//                   objectFit="cover"
+//                   quality={90}
+//                   className="rounded-xl"
+//                 />
+//               </div>
+//             ))}
+//           </div>
+
+//           <div
+//         //    ref={productsRef}
+//             className="space-y-12 mb-16">
+//             {blog.products.map((product, index) => (
+//               <article
+//                 key={index}
+//                 className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
+//               >
+//                 <h3 className="text-2xl font-bold mb-4 text-gray-800">{product.name}</h3>
+//                 <p className="text-3xl font-extrabold mb-6 text-blue-600">{product.price}</p>
+//                 <div className="mb-6">
+//                   <h4 className="text-lg font-semibold mb-2 text-gray-700">Features:</h4>
+//                   <ul className="list-disc list-inside text-gray-600 space-y-1">
+//                     {product.features.map((feature, featureIndex) => (
+//                       <li key={featureIndex}>{feature}</li>
+//                     ))}
+//                   </ul>
+//                 </div>
+//                 <div className="flex mb-6 space-x-8">
+//                   <div>
+//                     <h4 className="text-lg font-semibold mb-2 text-green-600">Pros:</h4>
+//                     <ul className="list-disc list-inside text-gray-600 space-y-1">
+//                       {product.pros.map((pro, proIndex) => (
+//                         <li key={proIndex}>{pro}</li>
+//                       ))}
+//                     </ul>
+//                   </div>
+//                   <div>
+//                     <h4 className="text-lg font-semibold mb-2 text-red-600">Cons:</h4>
+//                     <ul className="list-disc list-inside text-gray-600 space-y-1">
+//                       {product.cons.map((con, conIndex) => (
+//                         <li key={conIndex}>{con}</li>
+//                       ))}
+//                     </ul>
+//                   </div>
+//                 </div>
+//                 <p className="text-gray-700 mb-6 italic">{product.reviewScript}</p>
+//                 <a
+//                   href={product.affiliateLink}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-6 rounded-full hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105"
+//                 >
+//                   Buy Now
+//                 </a>
+//               </article>
+//             ))}
+//           </div>
+
+//           {blog.additionalSections.map((section, index) => (
+//             <section key={index} className="mb-16">
+//               <h2 className="text-3xl font-bold mb-8 text-gray-800">{section.sectionTitle}</h2>
+//               <div
+//             //    ref={faqRef}
+//                 className="space-y-6">
+//                 {section.content.map((item, contentIndex) => (
+//                   <div key={contentIndex} className="bg-white p-6 rounded-xl shadow-md">
+//                     <h3 className="text-xl font-semibold mb-2 text-gray-800">{item.question}</h3>
+//                     <p className="text-gray-700">{item.answer}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </section>
+//           ))}
+//         </div>
+//       </div>
+//     </>
+//   )
+// }
+
+// export default BlogDetails
+
+
+// // 5Thumbs
+ import React from 'react'
+ 
+ export default function BlogDetails() {
+   return (
+     <div>BlogDetails</div>
+   )
+ }
+ 

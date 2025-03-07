@@ -537,7 +537,7 @@ function StylishCard() {
     });
   }, []);
 
-  const products = [
+ const products = [
     {
       id: 1,
       name: 'Classic Shirt',

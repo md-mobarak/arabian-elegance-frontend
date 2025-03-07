@@ -77,7 +77,33 @@ module.exports = {
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
   		}
-  	}
+  	},
+	  daisyui: {
+		themes: [
+		  {
+			mytheme: {
+			  
+	"primary": "#ff009c",
+			  
+	"secondary": "#00aa00",
+			  
+	"accent": "#3e7bff",
+			  
+	"neutral": "#14180e",
+			  
+	"base-100": "#ffffff",
+			  
+	"info": "#00b3ff",
+			  
+	"success": "#08f398",
+			  
+	"warning": "#c53700",
+			  
+	"error": "#ff5977",
+			  },
+			},
+		  ],
+		},
   },
   plugins: [require("tailwindcss-animate")],
 };

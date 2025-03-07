@@ -11,10 +11,11 @@ import Testimonials from './Testimonials'
 import OfferCard from './OfferCard'
 import Blogs from './Blogs'
 import OurNewsletter from './OurNewsletter'
+import BlogDetails from './BlogDetails'
 
 function Homes() {
   return (
-    <div>
+    <div className=''>
     <HeroSection></HeroSection>
     <ScrollingText ></ScrollingText>
     <StayingProduct></StayingProduct>
@@ -27,6 +28,7 @@ function Homes() {
     <Testimonials></Testimonials>
     <Blogs></Blogs>
   <OurNewsletter></OurNewsletter>
+ 
     </div>
   )
 }

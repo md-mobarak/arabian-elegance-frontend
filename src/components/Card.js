@@ -155,9 +155,14 @@ function Card({product,index}) {
         <span className="font-bold text-gray-800">{product.price}</span>
       </div>
       {/* Add to Cart Button */}
-      <button className="mt-2 bg-orange-600 text-white px-6 py-1 rounded-full hover:bg-pink-700 transition-all z-20 relative">
+      <div className='flex justify-around'>
+      <button className="mt-2 btn btn-xs bg-orange-600  text-white text-xs py-1 px-2  rounded-full hover:bg-pink-700 transition-all z-20 relative">
         Add to Cart 
       </button>
+      <button className="mt-2 btn btn-xs bg-black text-white text-xs py-1 px-2 rounded-full hover:bg-pink-700 transition-all z-20 relative">
+        Buy Now
+      </button>
+      </div>
     </div>
   </div>
   )

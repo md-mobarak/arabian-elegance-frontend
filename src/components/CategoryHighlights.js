@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
-
- 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
@@ -52,16 +51,6 @@ function CategoryHighlights() {
       imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-6.png",
       description: "Stay warm with our stylish winter collection.",
     },
-    {
-      title: "Sportswear",
-      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-5.png",
-      description: "Comfortable sportswear for active lifestyles.",
-    },
-    {
-      title: "Winter Collection",
-      imgURL: "https://html.pixelfit.agency/pesco/assets/images/category/category-6.png",
-      description: "Stay warm with our stylish winter collection.",
-    },
   ];
 
   const prevRef = useRef(null);
@@ -69,7 +58,6 @@ function CategoryHighlights() {
 
   return (
     <div className=" lg:px-20 my-12 relative px-10">
-      {/* <p className="text-xl font-semibold text-pink-600"> <GiBeveledStar className="text-lg text-geen-500 px-2" /> Categories</p> */}
       <div className='flex  items-center'>
           <p><GiBeveledStar className='text-pink-700 font-bold text-xl' /></p>
           <p className='font-serif font-semibold text-pink-700'>Categories</p>
@@ -80,15 +68,13 @@ function CategoryHighlights() {
       <div className="absolute top-[30px] right-8 lg:right-20 md:right-20 flex space-x-4 z-10">
         <button
           ref={prevRef}
-          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 
-                     hover:bg-gray-700 transition-all duration-500"
+          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
         >
           <GoArrowLeft className="text-3xl" />
         </button>
         <button
           ref={nextRef}
-          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md 
-                     hover:bg-gray-700 transition-all duration-500"
+          className="bg-black text-white p-2 w-12 h-12 rounded-full shadow-md hover:bg-gray-700 transition-all duration-500"
         >
           <GoArrowRight className="text-3xl" />
         </button>
@@ -97,17 +83,16 @@ function CategoryHighlights() {
       {/* Swiper Slider */}
       <Swiper
         spaceBetween={30}
-        loop={true} // Enable infinite loop
+        loop={true}
         autoplay={{
-          delay: 3000, // 2 seconds
-          disableOnInteraction: false, // Keep autoplay running even after interaction
+          delay: 3000,
+          disableOnInteraction: false,
         }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
         onSwiper={(swiper) => {
-          // Attach custom navigation elements
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
@@ -115,24 +100,20 @@ function CategoryHighlights() {
         }}
         modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
         breakpoints={{
-          640: {
-            slidesPerView: 2,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          1024: {
-            slidesPerView: 5,
-          },
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 5 },
         }}
         className="mySwiper mt-6"
       >
         {categories.map((card, index) => (
           <SwiperSlide key={index}>
             <div className="relative my-8 flex flex-col items-center space-y-4 shadow-xl">
-              <img
+              <Image
                 src={card.imgURL}
                 alt={card.title}
+                width={300}
+                height={300}
                 className="w-full h-full rounded-3xl border-2 border-black "
               />
               <h1 className="border border-gray-500 text-black bg-white px-4 py-3 rounded-full absolute bottom-[-20px] font-sans text-md font-bold">
