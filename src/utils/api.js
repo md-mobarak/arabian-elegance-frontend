@@ -1,7 +1,15 @@
 import axios from "axios";
 
-const API = axios.create({
+export const API = axios.create({
   baseURL: "http://localhost:5000/api/v1/product", // 🔹 আপনার API URL দিন
 });
+ 
 
-export default API;
+
+// export const userIdentity = axios.get({
+//   baseURL: "http://localhost:5000/api/v1/auth/", // 🔹 আপনার API URL দিন
+// });
+
+
+
+

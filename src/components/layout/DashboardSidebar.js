@@ -6,12 +6,32 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaBox, FaUsers, FaClipboardList, FaCog, FaStore } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { FaUsersGear } from "react-icons/fa6";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 export default function DashboardSidebar({ isOpen, toggleSidebar }) {
   const pathname = usePathname();
 
   const isActive = (route) => {
     return pathname === route ? "bg-green-500 text-white" : "hover:bg-gray-100";
+  };
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // ক্লায়েন্ট সাইড থেকে টোকেন এবং ইউজার ডেটা মুছে ফেলা
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('user');
+
+    // refreshToken কুকি ক্লিয়ার করার জন্য সেট করা (expired)
+    document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure";
+
+    // যদি axios default header থাকে, তা রিমুভ করুন (যদি প্রয়োজন হয়)
+    // axios.defaults.headers.common['Authorization'] = '';
+
+    // সফল লগআউটের বার্তা দেখান এবং লগইন পেজে রিডাইরেক্ট করুন
+    toast.success('Logout successful!');
+    router.push('/');
   };
 
   return (
@@ -95,7 +115,7 @@ export default function DashboardSidebar({ isOpen, toggleSidebar }) {
       </ul>
 
       <div className="mt-6">
-        <button className="w-full flex items-center p-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
+        <button onClick={handleLogout}  className="w-full flex items-center p-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
           <IoIosLogOut className="text-lg" />
           {isOpen && <span className="ml-3">Log Out</span>}
         </button>

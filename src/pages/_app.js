@@ -1,3 +1,4 @@
+// import CartDrawer from "@/components/CartDrawer";
 import "@/styles/globals.css";
 
 
@@ -9,6 +10,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
+      {/* <CartDrawer></CartDrawer> */}
     </QueryClientProvider>
   );
 }

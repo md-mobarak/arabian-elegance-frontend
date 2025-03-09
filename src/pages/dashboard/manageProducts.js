@@ -28,8 +28,7 @@ import React from "react";
 export default function ManageProductsPage() {
   return (
     <DashboardLayout>
-      <div className="p-4">
-        <h1 className="text-3xl font-bold mb-6">Manage Products</h1>
+      <div className="">
         <ProductManagement />
       </div>
     </DashboardLayout>

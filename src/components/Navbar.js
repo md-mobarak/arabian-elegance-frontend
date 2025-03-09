@@ -395,7 +395,7 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
-
+  //  const token = localStorage.getItem('accessToken')
   return (
     <div className="">
       <nav
@@ -429,11 +429,14 @@ const Navbar = () => {
 
           {/* Icons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login" className="text-gray-700">
-              <FaUser size={20} />
-            </Link>
+            
             <Link href="/cart" className="text-gray-700">
               <FaShoppingCart size={20} />
+            </Link>
+            <Link href="/auth/login" className="text-gray-700">
+             {/* {token ?  */}
+             <FaUser size={20}/>
+              {/* // "logOut" :"Login"}  */}
             </Link>
           </div>
 
@@ -460,7 +463,7 @@ const Navbar = () => {
             ))}
             <hr />
             <li>
-              <Link href="/login" className="block py-2 text-gray-700 hover:bg-gray-100 rounded">
+              <Link href="/auth/login" className="block py-2 text-gray-700 hover:bg-gray-100 rounded">
                 Login / Register
               </Link>
             </li>

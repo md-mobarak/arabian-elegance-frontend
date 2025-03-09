@@ -12,10 +12,20 @@ import OfferCard from './OfferCard'
 import Blogs from './Blogs'
 import OurNewsletter from './OurNewsletter'
 import BlogDetails from './BlogDetails'
+// import CartDrawer from './CartDrawer'
+import dynamic from 'next/dynamic';
+// import React from 'react';
+
+const CartDrawer = dynamic(
+  () => import('../components/CartDrawer'),
+  { ssr: false } // Server-side rendering বন্ধ করুন
+);
+
 
 function Homes() {
   return (
     <div className=''>
+    <CartDrawer></CartDrawer>
     <HeroSection></HeroSection>
     <ScrollingText ></ScrollingText>
     <StayingProduct></StayingProduct>

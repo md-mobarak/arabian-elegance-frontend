@@ -10,9 +10,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['html.pixelfit.agency'], // Add the hostname here
+    domains: ['html.pixelfit.agency'],
+    domains: ['res.cloudinary.com'],
+     // Add the hostname here
   },
-  
+ 
   // Webpack Custom Configuration
   webpack: (config) => {
     config.module.rules.push({
