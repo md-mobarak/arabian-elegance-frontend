@@ -10,7 +10,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['html.pixelfit.agency','res.cloudinary.com'],
+    domains: ['html.pixelfit.agency','res.cloudinary.com','via.placeholder.com','example.com','i.ibb.co'],
     // domains: ['res.cloudinary.com'],
      // Add the hostname here
   },

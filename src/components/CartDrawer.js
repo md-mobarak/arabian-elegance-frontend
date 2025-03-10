@@ -1,4 +1,5 @@
 // components/CartDrawer.js
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -86,11 +87,15 @@ const CartDrawer = () => {
               cartItems.map(item => (
                 <div key={item.id} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
                   <div className="w-16 h-16 bg-white p-2 rounded border">
-                    <img 
+                    {/* <img 
                       src={item.image || '/placeholder-product.jpg'} 
                       alt={item.name} 
                       className="w-full h-full object-contain"
-                    />
+                    /> */}
+                    <Image
+                     src={item.image || '/placeholder-product.jpg'} 
+                     alt={item.name} 
+                     className="w-full h-full object-contain"/>
                   </div>
                   
                   <div className="flex-1">

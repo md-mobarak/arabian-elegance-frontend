@@ -1,4 +1,5 @@
 // components/OurNewsletter.js
+import Image from 'next/image';
 import React from 'react';
 
 function OurNewsletter() {
@@ -33,11 +34,19 @@ function OurNewsletter() {
 
       {/* Right Image */}
       <div className="w-full md:w-1/3 z-10 mt-4 md:mt-0">
-        <img
+      <Image
+            src="https://html.pixelfit.agency/pesco/assets/images/newsletter/newsletter-1.png"
+            alt="Stylish Couple"
+            className="w-full h-auto object-contain"
+            width={600}
+            height={400}
+            layout="responsive"
+      />
+        {/* <img
           src="https://html.pixelfit.agency/pesco/assets/images/newsletter/newsletter-1.png"
           alt="Stylish Couple"
           className="w-full h-auto object-contain"
-        />
+        /> */}
       </div>
     </div>
   );

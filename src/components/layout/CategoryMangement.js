@@ -412,6 +412,8 @@ import { FaEdit, FaTrash, FaSearch, FaPlus } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import Image from "next/image";
+import { baseUrl } from "@/utils/api";
 
 const CategoryManagement = () => {
   const queryClient = useQueryClient();
@@ -447,7 +449,7 @@ const CategoryManagement = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["categories", search,  page],
     queryFn: async () => {
-      let url = `http://localhost:5000/api/v1/category?page=${page}&limit=${limit}`;
+      let url = `${baseUrl}/category?page=${page}&limit=${limit}`;
       
       if (search) url += `&search=${search}`;
     //   if (parentCategory) url += `&parentCategory=${parentCategory}`;
@@ -462,8 +464,8 @@ const CategoryManagement = () => {
   const categoryMutation = useMutation({
     mutationFn: async ({ id, formData, existingImages }) => {
       const url = id 
-        ? `http://localhost:5000/api/v1/category/${id}` 
-        : "http://localhost:5000/api/v1/category";
+        ? `${baseUrl}/category/${id}` 
+        : `${baseUrl}/category`;
       const method = id ? "PUT" : "POST";
 
       // Extract form data
@@ -524,7 +526,7 @@ const CategoryManagement = () => {
   // Delete Category Mutation
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`http://localhost:5000/api/v1/category/${id}`, {
+      const res = await fetch(`${baseUrl}/category/${id}`, {
         method: "DELETE",
         headers: getHeaders()
       });
@@ -639,11 +641,20 @@ const CategoryManagement = () => {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         {category.images?.[0] && (
-                          <img
-                            src={category.images[0]}
+                        //   <img
+                        //     src={category.images[0]}
+                        //     alt={category.name}
+                        //     className="w-8 h-8 object-cover rounded"
+                        //   />
+                        <Image
+                               src={category.images[0]}
                             alt={category.name}
                             className="w-8 h-8 object-cover rounded"
-                          />
+                            width={600}
+                            height={400}
+                            layout="responsive"
+                        
+                        />
                         )}
                         <span className="font-medium">{category.name}</span>
                       </div>
@@ -784,12 +795,22 @@ const CategoryManagement = () => {
                 <label className="block text-sm font-medium mb-1">Images</label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {selectedCategory?.images?.map((img, index) => (
-                    <img
-                      key={index}
+                    // <img
+                    //   key={index}
+                    //   src={img}
+                    //   alt={`Category image ${index + 1}`}
+                    //   className="w-20 h-20 object-cover rounded"
+                    // />
+                    <Image
+                            key={index}
                       src={img}
                       alt={`Category image ${index + 1}`}
                       className="w-20 h-20 object-cover rounded"
-                    />
+               width={600}
+                 height={400}
+                 layout="responsive"
+             
+             />
                   ))}
                 </div>
                 <input

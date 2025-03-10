@@ -1,7 +1,6 @@
 "use client";
 import CategoryManagement from '@/components/layout/CategoryMangement';
 import DashboardLayout from '@/components/layout/DashboarLayouts'
-import ProductCatalog from '@/components/layout/ProductCatalog'
 import React from 'react'
 
 function CategoryPage() {

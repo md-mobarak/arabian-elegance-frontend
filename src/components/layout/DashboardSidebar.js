@@ -79,7 +79,7 @@ export default function DashboardSidebar({ isOpen, toggleSidebar }) {
         <li>
           <Link
             href="/dashboard/category"
-            className={`flex items-center p-3 rounded-lg ${isActive("/dashboard/customer")}`}
+            className={`flex items-center p-3 rounded-lg ${isActive("/dashboard/category")}`}
           >
             <FaUsers className="text-lg" />
             {isOpen && <span className="ml-3">Category</span>}

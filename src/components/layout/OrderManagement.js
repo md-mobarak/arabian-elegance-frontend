@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { baseUrl } from "@/utils/api";
 
 const OrderManagement = () => {
   const queryClient = useQueryClient();
@@ -48,7 +49,7 @@ const OrderManagement = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["orders", search, status, paymentStatus, page, startDate, endDate],
     queryFn: async () => {
-      let url = `http://localhost:5000/api/v1/order?page=${page}&limit=${limit}`;
+      let url = `${baseUrl}/order?page=${page}&limit=${limit}`;
       
       if (search) url += `&search=${search}`;
       if (status) url += `&status=${status}`;
@@ -65,7 +66,7 @@ const OrderManagement = () => {
   // Update Order Mutation
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }) => {
-      const res = await fetch(`http://localhost:5000/api/v1/order/${id}`, {
+      const res = await fetch(`${baseUrl}/order/${id}`, {
         method: "PUT",
         headers: getHeaders(),
         body: JSON.stringify(data)
@@ -86,7 +87,7 @@ const OrderManagement = () => {
   // Delete Order Mutation
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`http://localhost:5000/api/v1/order/${id}`, {
+      const res = await fetch(`${baseUrl}/api/v1/order/${id}`, {
         method: "DELETE",
         headers: getHeaders()
       });

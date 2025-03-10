@@ -1,6 +1,6 @@
 "use client";
 import DashboardLayout from '@/components/layout/DashboarLayouts'
-import OurCustomer from '@/components/layout/OurCustomer'
+// import OurCustomer from '@/components/layout/OurCustomer'
 import React from 'react'
 
 function CustomerPage() {
@@ -10,7 +10,7 @@ function CustomerPage() {
 
     {/* <ProductCatalog></ProductCatalog>
      */}
-     <OurCustomer></OurCustomer>
+     {/* <OurCustomer></OurCustomer> */}
 </div>
 </DashboardLayout>
   )

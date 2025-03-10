@@ -11,6 +11,8 @@ import { RxCross2 } from "react-icons/rx";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import ProductModal from "../ProductModal";
+import Image from "next/image";
+import { baseUrl } from "@/utils/api";
 
 const ProductManagement = () => {
   const queryClient = useQueryClient();
@@ -49,17 +51,17 @@ const ProductManagement = () => {
     queryKey: ["products", search, category, minPrice, maxPrice, page],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/product?search=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${page}&limit=${limit}`
+        `${baseUrl}/product?search=${search}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${page}&limit=${limit}`
       );
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
     }
   });
-// console.log(data)
+console.log(data)
   // Delete product mutation
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
+      const res = await fetch(`${baseUrl}/product/${id}`, {
         method: "DELETE",
         headers: getHeaders()
       });
@@ -79,7 +81,7 @@ const ProductManagement = () => {
   
   const productMutation = useMutation({
     mutationFn: async ({ formData, id }) => {
-      const url = id ? `http://localhost:5000/api/v1/product/${id}` : "http://localhost:5000/api/v1/product";
+      const url = id ? `${baseUrl}/product/${id}` : `${baseUrl}/product`;
       const method = id ? "PUT" : "POST";
 
 // Handle image uploads with ImageBB
@@ -228,11 +230,21 @@ if (images.length > 0) {
                     <td className="px-6 py-4">
                       <div className="flex items-center">
                         {product.images?.[0] && (
-                          <img
-                            src={product.images[0]}
+                          // <img
+                          //   src={product.images[0]}
+                          //   alt={product.title}
+                          //   className="w-12 h-12 object-cover rounded mr-4"
+                          // />
+
+                          <Image
+                         src={product.images[0]}
                             alt={product.title}
                             className="w-12 h-12 object-cover rounded mr-4"
-                          />
+                       width={600}
+                       height={400}
+                       layout="responsive"
+                   
+                   />
                         )}
                         <span className="font-medium">{product.title}</span>
                       </div>
@@ -365,12 +377,22 @@ if (images.length > 0) {
             />
             <div className="mt-2 flex gap-2 flex-wrap">
               {selectedProduct?.images?.map((img, i) => (
-                <img
-                  key={i}
+                // <img
+                //   key={i}
+                //   src={img}
+                //   alt={`Product ${i}`}
+                //   className="w-16 h-16 object-cover rounded"
+                // />
+                <Image
+                 key={i}
                   src={img}
                   alt={`Product ${i}`}
                   className="w-16 h-16 object-cover rounded"
-                />
+             width={600}
+             height={400}
+             layout="responsive"
+         
+         />
               ))}
             </div>
           </div>
