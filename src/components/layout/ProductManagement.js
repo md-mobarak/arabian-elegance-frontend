@@ -76,29 +76,31 @@ const ProductManagement = () => {
   });
 
   // Create/Update product mutation
+  
   const productMutation = useMutation({
     mutationFn: async ({ formData, id }) => {
       const url = id ? `http://localhost:5000/api/v1/product/${id}` : "http://localhost:5000/api/v1/product";
       const method = id ? "PUT" : "POST";
 
-      // Handle image uploads
-      const images = formData.getAll("images");
-      let imageUrls = [];
+// Handle image uploads with ImageBB
+const images = formData.getAll("images");
+let imageUrls = [];
 
-      if (images.length > 0) {
-        const uploadPromises = Array.from(images).map(async (image) => {
-          const data = new FormData();
-          data.append("file", image);
-          data.append("upload_preset", "arabianElegance"); // প্রিসেট নাম
-          data.append("api_key", "961343819358223"); // API Key (ঐচ্ছিক)
-          const res = await fetch(
-            `https://api.cloudinary.com/v1_1/ArabianEleganceBD/upload`,
-            { method: "POST", body: data }
-          );
-          return res.json();
-        });
-        imageUrls = (await Promise.all(uploadPromises)).map(img => img.secure_url);
-      }
+if (images.length > 0) {
+  const uploadPromises = Array.from(images).map(async (image) => {
+    const data = new FormData();
+    data.append("image", image);
+    
+    const res = await fetch(
+      `https://api.imgbb.com/1/upload?key=85550ec4bf046ba661f38ebd86e505ac`,
+      { method: "POST", body: data }
+    );
+    const json = await res.json();
+    return json.data.url; // ImageBB থেকে URL নেওয়া
+  });
+  // console.log(uploadPromises)
+  imageUrls = await Promise.all(uploadPromises);
+}
 
       const productData = {
         title: formData.get("title"),
@@ -109,12 +111,14 @@ const ProductManagement = () => {
         images: imageUrls,
         ...(id && { images: [...selectedProduct.images, ...imageUrls] })
       };
+      console.log(productData)
 
       const res = await fetch(url, {
         method,
         headers: getHeaders(),
         body: JSON.stringify(productData)
       });
+      // console.log(res);
       if (res.status === 401) throw new Error("Unauthorized");
       return res.json();
     },

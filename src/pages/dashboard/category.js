@@ -1,17 +1,19 @@
 "use client";
+import CategoryManagement from '@/components/layout/CategoryMangement';
 import DashboardLayout from '@/components/layout/DashboarLayouts'
 import ProductCatalog from '@/components/layout/ProductCatalog'
 import React from 'react'
 
-function CatalogPage() {
+function CategoryPage() {
   return (
     <DashboardLayout>
-<div>CatalogPage
+<div>
+  {/* CatalogPage */}
+<CategoryManagement></CategoryManagement>
 
-    <ProductCatalog></ProductCatalog>
 </div>
 </DashboardLayout>
   )
 }
 
-export default CatalogPage
+export default CategoryPage

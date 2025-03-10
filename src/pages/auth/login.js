@@ -443,6 +443,8 @@ export default function LoginPage() {
       api.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`;
 
       localStorage.setItem('userRole', response.data.user.role);
+      localStorage.setItem('userId', response.data.user._id);
+      // userId: localStorage.getItem("userId") || ""
       const redirectPath = response.data.user.role === 'admin' ? '/dashboard' : '/';
       // console.log(redirectPath)
 

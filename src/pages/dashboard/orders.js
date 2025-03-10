@@ -2,6 +2,7 @@
 // import OrdersTable from "../../components/OrdersTable";
 "use client";
 import DashboardLayout from "@/components/layout/DashboarLayouts";
+import OrderManagement from "@/components/layout/OrderManagement";
 import OrderTable from "@/components/layout/OrderTable";
 
 const OrdersPage = () => {
@@ -9,7 +10,8 @@ const OrdersPage = () => {
 
     <DashboardLayout>
       <h2 className="text-2xl font-bold">All Orders</h2>
-      <OrderTable></OrderTable>
+      <OrderManagement></OrderManagement>
+      {/* <OrderTable></OrderTable> */}
       </DashboardLayout>
   );
 };
