@@ -1,274 +1,305 @@
 
+"use client";
+import React, { useState, useEffect } from 'react';
+import { GiPriceTag } from 'react-icons/gi';
+import { FaFilter } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Card from '@/components/Card';
+import { baseUrl } from '@/utils/api';
 
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import ReactPaginate from "react-paginate";
-import Card from "@/components/Card";
-
-// Fetch products from the API
-const fetchProducts = async ({ search, category, minPrice, maxPrice, page, limit }) => {
-  const url = new URL("http://localhost:5000/api/v1/product");
-  if (search) url.searchParams.append("search", search);
-  if (category) url.searchParams.append("category", category);
-  if (minPrice) url.searchParams.append("minPrice", minPrice);
-  if (maxPrice) url.searchParams.append("maxPrice", maxPrice);
-  url.searchParams.append("page", page);
-  url.searchParams.append("limit", limit);
-
-  const response = await fetch(url.toString());
-  if (!response.ok) throw new Error("Failed to fetch products");
-  return response.json();
-};
-
-export default function Shop() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [page, setPage] = useState(1);
-  const limit = 10;
-
-  // React Query to fetch products
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["products", { search, category, minPrice, maxPrice, page, limit }],
-    queryFn: () => fetchProducts({ search, category, minPrice, maxPrice, page, limit }),
-    keepPreviousData: true, // Keep previous data while fetching new data
-  });
-
-  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
-  if (isError) return <p className="text-center mt-10 text-red-500">Something went wrong!</p>;
-
-  const products = [
-    {
-      id: 1,
-      name: 'Classic Shirt',
-      price: '$29.99',
-      oldPrice: '$39.99',
-      discount: '25% OFF',
-      rating: 4.3,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-1.png',
-    },
-    {
-      id: 1,
-      name: 'Classic Shirt',
-      price: '$29.99',
-      oldPrice: '$39.99',
-      discount: '25% OFF',
-      rating: 4.3,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-2.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-3.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-4.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-5.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-6.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-6.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-7.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-8.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-9.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-10.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-11.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-12.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-13.png',
-    },
-    {
-      id: 2,
-      name: 'Stylish Jacket',
-      price: '$49.99',
-      oldPrice: '$69.99',
-      discount: '30% OFF',
-      rating: 4.7,
-      img: 'https://html.pixelfit.agency/pesco/assets/images/products/feature-product-14.png',
-    },
-  
-  ];
-
-
-
-  return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Home/<span className="text-green-500">Shop</span></h1>
-
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Sidebar Filters */}
-        <div className="w-full lg:w-1/4 bg-white p-6 shadow-md rounded-lg">
-          <h2 className="text-xl font-bold mb-4">Product Categories</h2>
-          <ul className="space-y-2">
-            {["Streams Gaming", "Store Gaming", "Store View", "Content", "Accessories", "Security View", "Voting Gaming", "Services", "Admissions"].map((cat, index) => (
-              <li key={index} className="flex items-center">
-                <input type="checkbox" id={`cat-${index}`} className="mr-2" />
-                <label htmlFor={`cat-${index}`} className="text-gray-700">{cat}</label>
-              </li>
-            ))}
-          </ul>
-
-          <h2 className="text-xl font-bold mt-6 mb-4">Price Filter</h2>
-          <div className="space-y-2">
-            <input
-              type="number"
-              placeholder="Min Price"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-              className="w-full p-2 border rounded-md"
-            />
-            <input
-              type="number"
-              placeholder="Max Price"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-              className="w-full p-2 border rounded-md"
-            />
-          </div>
-
-          <h2 className="text-xl font-bold mt-6 mb-4">Color</h2>
-          <div className="flex flex-wrap gap-2">
-            {["Red", "Blue", "Green", "Yellow", "Black", "White"].map((color, index) => (
-              <div key={index} className="w-6 h-6 rounded-full" style={{ backgroundColor: color.toLowerCase() }}></div>
-            ))}
-          </div>
-
-          <h2 className="text-xl font-bold mt-6 mb-4">Size</h2>
-          <div className="flex flex-wrap gap-2">
-            {["S", "M", "L", "XL", "XXL"].map((size, index) => (
-              <button key={index} className="px-3 py-1 border rounded-md">{size}</button>
-            ))}
-          </div>
-        </div>
-
-        {/* Product Grid */}
-        <div className="w-full lg:w-3/4">
-          <div className="flex flex-wrap gap-4 justify-center mb-6">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="border p-2 rounded-md"
-            />
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="border p-2 rounded-md">
-              <option value="">All Categories</option>
-              <option value="burqa">Burqa</option>
-              <option value="tshirt">T-Shirt</option>
-            </select>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <Card key={product._id} product={product} />
-            ))}
-          </div>
-
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            breakLabel={"..."}
-            pageCount={data.totalPages}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={3}
-            onPageChange={(e) => setPage(e.selected + 1)}
-            containerClassName={"flex justify-center mt-6 gap-2"}
-            pageClassName={"px-3 py-1 border rounded-md cursor-pointer"}
-            activeClassName={"bg-blue-500 text-white"}
-            previousClassName={"px-3 py-1 border rounded-md cursor-pointer"}
-            nextClassName={"px-3 py-1 border rounded-md cursor-pointer"}
-            disabledClassName={"text-gray-400 cursor-not-allowed"}
-          />
-        </div>
+const SkeletonLoader = () => (
+  <div className="animate-pulse bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-gray-200 h-64 w-full" />
+    <div className="p-4 space-y-3">
+      <div className="h-4 bg-gray-200 rounded w-3/4" />
+      <div className="flex space-x-2">
+        <div className="h-4 bg-gray-200 rounded w-1/4" />
+        <div className="h-4 bg-gray-200 rounded w-1/4" />
+      </div>
+      <div className="flex justify-between">
+        <div className="h-8 bg-gray-200 rounded-full w-24" />
+        <div className="h-8 bg-gray-200 rounded-full w-24" />
       </div>
     </div>
+  </div>
+);
+
+const Shop = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    search: '',
+    category: '',
+    minPrice: '',
+    maxPrice: '',
+    page: 1,
+    limit: 12,
+  });
+
+  const [categories, setCategories] = useState([]);
+
+  // Fetch categories from backend
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/category`);
+        if (!response.ok) throw new Error('Failed to fetch categories');
+        const { categories } = await response.json();
+        setCategories([{ _id: '', name: 'All Products' }, ...categories]);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Fetch products with filters
+  const fetchProducts = async () => {
+    const params = new URLSearchParams({
+      ...filters,
+      page: filters.page.toString(),
+      limit: filters.limit.toString()
+    });
+    
+    const response = await fetch(`${baseUrl}/product?${params}`);
+    if (!response.ok) throw new Error('Failed to fetch products');
+    return response.json();
+  };
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['products', filters],
+    queryFn: fetchProducts,
+    keepPreviousData: true,
+  });
+
+  // Handle filter changes
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters(prev => ({ ...prev, [name]: value, page: 1 }));
+  };
+
+  // Handle category selection
+  const handleCategoryClick = (categoryId) => {
+    setFilters(prev => ({ ...prev, category: categoryId, page: 1 }));
+  };
+
+  // Pagination controls
+  const handlePageChange = (pageNumber) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setFilters(prev => ({ ...prev, page: pageNumber }));
+  };
+
+  // Responsive pagination render
+  const renderPagination = () => {
+    if (!data?.totalPages) return null;
+    
+    const totalPages = data.totalPages;
+    const visiblePages = [];
+    const maxVisible = 5;
+
+    let start = Math.max(1, filters.page - Math.floor(maxVisible / 2));
+    let end = Math.min(totalPages, start + maxVisible - 1);
+
+    if (end - start < maxVisible - 1) {
+      start = Math.max(1, end - maxVisible + 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      visiblePages.push(i);
+    }
+
+    return (
+      <div className="mt-8 flex flex-wrap justify-center gap-2">
+        <button
+          onClick={() => handlePageChange(filters.page - 1)}
+          disabled={filters.page === 1}
+          className="px-4 py-2 bg-orange-600 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-orange-700 transition-colors"
+        >
+          Previous
+        </button>
+
+        {start > 1 && (
+          <button
+            onClick={() => handlePageChange(1)}
+            className={`px-4 py-2 rounded-md border ${
+              1 === filters.page 
+                ? 'bg-orange-600 text-white border-orange-600' 
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-orange-50'
+            }`}
+          >
+            1
+          </button>
+        )}
+
+        {start > 2 && <span className="px-4 py-2">...</span>}
+
+        {visiblePages.map(pageNumber => (
+          <button
+            key={pageNumber}
+            onClick={() => handlePageChange(pageNumber)}
+            className={`px-4 py-2 rounded-md border transition-colors ${
+              filters.page === pageNumber
+                ? 'bg-orange-600 text-white border-orange-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-orange-50'
+            }`}
+          >
+            {pageNumber}
+          </button>
+        ))}
+
+        {end < totalPages - 1 && <span className="px-4 py-2">...</span>}
+
+        {end < totalPages && (
+          <button
+            onClick={() => handlePageChange(totalPages)}
+            className={`px-4 py-2 rounded-md border ${
+              totalPages === filters.page 
+                ? 'bg-orange-600 text-white border-orange-600' 
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-orange-50'
+            }`}
+          >
+            {totalPages}
+          </button>
+        )}
+
+        <button
+          onClick={() => handlePageChange(filters.page + 1)}
+          disabled={filters.page === totalPages}
+          className="px-4 py-2 bg-orange-600 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-orange-700 transition-colors"
+        >
+          Next
+        </button>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gray-50">
+        {/* Mobile Filter Toggle */}
+        <button
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          className="lg:hidden fixed bottom-6 right-6 z-50 bg-orange-600 text-white p-3 rounded-full shadow-lg hover:bg-orange-700 transition-colors"
+        >
+          {isFilterOpen ? <MdClose size={24} /> : <FaFilter size={24} />}
+        </button>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex gap-8">
+            {/* Filter Sidebar */}
+            <aside
+              className={`w-64 bg-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 fixed lg:static lg:translate-x-0 z-40 h-[calc(100vh-4rem)] lg:h-auto overflow-y-auto ${
+                isFilterOpen ? 'translate-x-0' : '-translate-x-full'
+              }`}
+            >
+              <h2 className="text-2xl font-bold flex items-center gap-2 mb-6 text-gray-800">
+                <GiPriceTag className="text-orange-600" /> Filters
+              </h2>
+
+              {/* Categories Section */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-gray-700">Categories</h3>
+                <div className="space-y-2">
+                  {categories.map(category => (
+                    <button
+                      key={category._id}
+                      onClick={() => handleCategoryClick(category._id)}
+                      className={`w-full text-left p-3 rounded-md transition-colors duration-200 ${
+                        filters.category === category._id
+                          ? 'bg-orange-600 text-white'
+                          : 'bg-gray-50 text-gray-600 hover:bg-orange-100'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price Filter */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-gray-700">Price Range</h3>
+                <div className="flex gap-3">
+                  <input
+                    type="number"
+                    name="minPrice"
+                    value={filters.minPrice}
+                    onChange={handleFilterChange}
+                    placeholder="Min"
+                    className="w-1/2 p-2 border rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                  <input
+                    type="number"
+                    name="maxPrice"
+                    value={filters.maxPrice}
+                    onChange={handleFilterChange}
+                    placeholder="Max"
+                    className="w-1/2 p-2 border rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+              </div>
+
+              {/* Search Filter */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4 text-gray-700">Search</h3>
+                <input
+                  type="text"
+                  name="search"
+                  value={filters.search}
+                  onChange={handleFilterChange}
+                  placeholder="Search products..."
+                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
+            </aside>
+
+            {/* Main Content Area */}
+            <main className="flex-1 lg:ml-4">
+              {/* Product Grid */}
+              {isLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {Array.from({ length: filters.limit }).map((_, i) => (
+                    <SkeletonLoader key={i} />
+                  ))}
+                </div>
+              ) : isError ? (
+                <div className="text-center py-12">
+                  <p className="text-red-500 text-lg">Failed to load products. Please try again later.</p>
+                </div>
+              ) : data?.products?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {data.products.map((product) => (
+                      <Card
+                        key={product._id}
+                        product={{
+                          ...product,
+                          name: product.title,
+                          img: product.images[0],
+                          price: product.price,
+                          oldPrice: Math.round(product.price * 1.2),
+                          discount: '20% Off'
+                        }}
+                      />
+                    ))}
+                  </div>
+                  {renderPagination()}
+                </>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-gray-600 text-lg">No products found matching your criteria.</p>
+                </div>
+              )}
+            </main>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
   );
-}
+};
+
+export default Shop;

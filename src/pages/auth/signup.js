@@ -434,9 +434,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import { PulseLoader } from 'react-spinners';
+import { baseUrl } from '@/utils/api';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api/v1',
+  baseURL: baseUrl,
 });
 
 export default function SignupPage() {

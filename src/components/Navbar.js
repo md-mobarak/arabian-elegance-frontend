@@ -418,7 +418,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 font-medium">
-            {["Home", "Winter Collections", "T-Shirts", "Caps", "Panjabi", "Pants", "Sunnah Essential", "Scarf", "Accessories"].map((item) => (
+            {["Home", "Shop", "T-Shirts", "Caps", "Panjabi", "Pants", "Sunnah Essential", "Scarf", "Accessories"].map((item) => (
               <li key={item}>
                 <Link href={`/${item.toLowerCase().replace(/ /g, "-")}`} className="hover:text-gray-600 transition">
                   {item}
@@ -454,7 +454,7 @@ const Navbar = () => {
             <FaTimes size={24} />
           </button>
           <ul className="mt-16 z-50 bg-white space-y-4 px-6 font-medium">
-            {["Home", "Winter Collections", "T-Shirts", "Caps", "Panjabi", "Pants", "Sunnah Essential", "Scarf", "Accessories"].map((item) => (
+            {["Home", "shop", "T-Shirts", "Caps", "Panjabi", "Pants", "Sunnah Essential", "Scarf", "Accessories"].map((item) => (
               <li key={item}>
                 <Link href={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block py-2 text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>
                   {item}

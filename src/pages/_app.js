@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      {/* <CartDrawer></CartDrawer> */}
     </QueryClientProvider>
   );
 }

@@ -401,14 +401,13 @@
 
 // export default CategoryManagement;
 
-
 "use client";
 import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { confirmAlert } from "react-confirm-alert";
 import Skeleton from "react-loading-skeleton";
-import { FaEdit, FaTrash, FaSearch, FaPlus } from "react-icons/fa";
+import { FaEdit, FaTrash, FaSearch, FaPlus, FaEye } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -418,10 +417,10 @@ import { baseUrl } from "@/utils/api";
 const CategoryManagement = () => {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
-//   const [parentCategory, setParentCategory] = useState("");
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const limit = 10;
 
   // Authentication State
@@ -447,12 +446,10 @@ const CategoryManagement = () => {
 
   // Fetch Categories Query
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["categories", search,  page],
+    queryKey: ["categories", search, page],
     queryFn: async () => {
       let url = `${baseUrl}/category?page=${page}&limit=${limit}`;
-      
       if (search) url += `&search=${search}`;
-    //   if (parentCategory) url += `&parentCategory=${parentCategory}`;
 
       const res = await fetch(url, { headers: getHeaders() });
       if (!res.ok) throw new Error("Failed to fetch categories");
@@ -472,7 +469,6 @@ const CategoryManagement = () => {
       const name = formData.get("name");
       const slug = formData.get("slug");
       const description = formData.get("description");
-    //   const parentCategory = formData.get("parentCategory");
       const imageFiles = formData.getAll("images");
 
       // Handle image uploads
@@ -503,7 +499,7 @@ const CategoryManagement = () => {
         description,
         images: imageUrls
       };
-       console.log(categoryData)
+
       const res = await fetch(url, {
         method,
         headers: getHeaders(),
@@ -516,7 +512,7 @@ const CategoryManagement = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["categories"]);
       toast.success(`Category ${selectedCategory ? "updated" : "created"} successfully`);
-      setIsModalOpen(false);
+      setIsEditModalOpen(false);
     },
     onError: (error) => {
       toast.error(error.message === "Unauthorized" ? "Login expired!" : "Operation failed");
@@ -545,7 +541,6 @@ const CategoryManagement = () => {
   // Handle Filters Reset
   const resetFilters = () => {
     setSearch("");
-    // setParentCategory("");
     setPage(1);
   };
 
@@ -577,7 +572,7 @@ const CategoryManagement = () => {
             <button
               onClick={() => {
                 setSelectedCategory(null);
-                setIsModalOpen(true);
+                setIsEditModalOpen(true);
               }}
               className="bg-green-500 hover:bg-green-700 text-white px-6 py-2 rounded-lg flex items-center gap-2"
             >
@@ -599,19 +594,6 @@ const CategoryManagement = () => {
           />
           <FaSearch className="absolute left-3 top-3 text-gray-400" />
         </div>
-        
-        {/* <select
-          value={parentCategory}
-          onChange={(e) => setParentCategory(e.target.value)}
-          className="border p-2 rounded-lg"
-        >
-          <option value="">All Parent Categories</option>
-          {data?.categories
-            ?.filter(cat => !cat.parentCategory)
-            .map(cat => (
-              <option key={cat._id} value={cat._id}>{cat.name}</option>
-            ))}
-        </select> */}
       </div>
 
       {/* Categories Table */}
@@ -631,7 +613,6 @@ const CategoryManagement = () => {
                 <tr>
                   <th className="px-6 py-3 text-left">Name</th>
                   <th className="px-6 py-3 text-left">Slug</th>
-                  {/* <th className="px-6 py-3 text-left">Parent Category</th> */}
                   <th className="px-6 py-3 text-left">Actions</th>
                 </tr>
               </thead>
@@ -641,33 +622,32 @@ const CategoryManagement = () => {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         {category.images?.[0] && (
-                        //   <img
-                        //     src={category.images[0]}
-                        //     alt={category.name}
-                        //     className="w-8 h-8 object-cover rounded"
-                        //   />
-                        <Image
-                               src={category.images[0]}
+                          <Image
+                            src={category.images[0]}
                             alt={category.name}
-                            className="w-8 h-8 object-cover rounded"
+                            className="w-10 h-10 object-cover rounded-full"
                             width={600}
                             height={400}
-                            layout="responsive"
-                        
-                        />
+                          />
                         )}
                         <span className="font-medium">{category.name}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">{category.slug}</td>
-                    {/* <td className="px-6 py-4">
-                      {category.parentCategory?.name || "None"}
-                    </td> */}
                     <td className="px-6 py-4 space-x-2">
                       <button
                         onClick={() => {
                           setSelectedCategory(category);
-                          setIsModalOpen(true);
+                          setIsViewModalOpen(true);
+                        }}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        <FaEye className="text-xl" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedCategory(category);
+                          setIsEditModalOpen(true);
                         }}
                         className="text-indigo-600 hover:text-indigo-900"
                       >
@@ -714,8 +694,8 @@ const CategoryManagement = () => {
         )}
       </div>
 
-      {/* Category Modal */}
-      {isModalOpen && (
+      {/* Edit Category Modal */}
+      {isEditModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
             <div className="flex justify-between items-center mb-4">
@@ -723,7 +703,7 @@ const CategoryManagement = () => {
                 {selectedCategory ? "Edit Category" : "Create Category"}
               </h3>
               <button 
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setIsEditModalOpen(false)}
                 className="text-gray-500 hover:text-gray-700"
               >
                 <RxCross2 className="text-2xl" />
@@ -775,42 +755,18 @@ const CategoryManagement = () => {
                 />
               </div>
 
-              {/* <div>
-                <label className="block text-sm font-medium mb-1">Parent Category</label>
-                <select
-                  name="parentCategory"
-                  defaultValue={selectedCategory?.parentCategory?._id}
-                  className="w-full p-2 border rounded"
-                >
-                  <option value="">None</option>
-                  {data?.categories
-                    ?.filter(cat => !cat.parentCategory)
-                    .map(cat => (
-                      <option key={cat._id} value={cat._id}>{cat.name}</option>
-                    ))}
-                </select>
-              </div> */}
-
               <div>
                 <label className="block text-sm font-medium mb-1">Images</label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {selectedCategory?.images?.map((img, index) => (
-                    // <img
-                    //   key={index}
-                    //   src={img}
-                    //   alt={`Category image ${index + 1}`}
-                    //   className="w-20 h-20 object-cover rounded"
-                    // />
                     <Image
-                            key={index}
+                      key={index}
                       src={img}
                       alt={`Category image ${index + 1}`}
                       className="w-20 h-20 object-cover rounded"
-               width={600}
-                 height={400}
-                 layout="responsive"
-             
-             />
+                      width={100}
+                      height={100}
+                    />
                   ))}
                 </div>
                 <input
@@ -824,7 +780,7 @@ const CategoryManagement = () => {
               <div className="flex justify-end gap-2 mt-6">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={() => setIsEditModalOpen(false)}
                   className="px-4 py-2 border rounded hover:bg-gray-50"
                 >
                   Cancel
@@ -837,6 +793,59 @@ const CategoryManagement = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* View Category Modal */}
+      {isViewModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold">Category Details</h3>
+              <button 
+                onClick={() => setIsViewModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <RxCross2 className="text-2xl" />
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Name</label>
+                  <p className="p-2 bg-gray-100 rounded">{selectedCategory?.name}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Slug</label>
+                  <p className="p-2 bg-gray-100 rounded">{selectedCategory?.slug}</p>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Description</label>
+                <p className="p-2 bg-gray-100 rounded whitespace-pre-line">
+                  {selectedCategory?.description || "No description"}
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Images</label>
+                <div className="flex flex-wrap gap-4">
+                  {selectedCategory?.images?.map((img, index) => (
+                    <Image
+                      key={index}
+                      src={img}
+                      alt={`Category image ${index + 1}`}
+                      className="w-32 h-32 object-cover rounded-lg"
+                      width={128}
+                      height={128}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
