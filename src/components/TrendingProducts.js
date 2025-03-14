@@ -3,8 +3,10 @@ import React, { useRef } from "react";
 import { GiBeveledStar } from "react-icons/gi";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
+import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
 
 
 function TrendingProducts() {

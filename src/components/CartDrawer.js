@@ -95,6 +95,8 @@ const CartDrawer = () => {
                     <Image
                      src={item.image || '/placeholder-product.jpg'} 
                      alt={item.name} 
+                     width={500} 
+                     height={500}
                      className="w-full h-full object-contain"/>
                   </div>
                   

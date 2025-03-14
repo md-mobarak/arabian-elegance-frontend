@@ -88,6 +88,7 @@ import { FaHeart } from 'react-icons/fa';
 
 import { gsap } from 'gsap';
 import { GiBeveledStar } from 'react-icons/gi';
+import Link from 'next/link';
 function Card({product,index}) {
 
   const cardRef = useRef([]);
@@ -159,8 +160,17 @@ function Card({product,index}) {
       <button className="mt-2 btn btn-xs bg-orange-600  text-white text-xs py-1 px-2  rounded-full hover:bg-pink-700 transition-all z-20 relative">
         Add to Cart 
       </button>
-      <button className="mt-2 btn btn-xs bg-black text-white text-xs py-1 px-2 rounded-full hover:bg-pink-700 transition-all z-20 relative">
-        Buy Now
+      <button  className="mt-2 btn btn-xs bg-black text-white text-xs py-1 px-2 rounded-full hover:bg-pink-700 transition-all z-20 relative">
+   
+        <Link
+                // href="/auth/login"
+                href={`/shop/${product?._id}`}
+               
+              >
+                 Buy Now
+             
+              </Link>
+
       </button>
       </div>
     </div>

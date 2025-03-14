@@ -8,6 +8,12 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			inter: ["var(--font-inter)", "sans-serif"],
+			poppins: ["var(--font-poppins)", "sans-serif"],
+			roboto: ["var(--font-roboto)", "sans-serif"],
+			montserrat: ["var(--font-montserrat)", "sans-serif"],
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

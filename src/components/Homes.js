@@ -1,8 +1,9 @@
+"use client";
 import React from 'react'
 import HeroSection from './HeroSection'
 import ScrollingText from './ScrollingText'
 import StayingProduct from './StayingProduct'
-import CategoryHighlights from './CategoryHighlights'
+// import CategoryHighlights from './CategoryHighlights'
 import UpToProduct from './UpToProduct'
 import OurCollection from './OurCollection'
 import WorkProcessing from './WorkProcessing'
@@ -20,6 +21,14 @@ const CartDrawer = dynamic(
   () => import('../components/CartDrawer'),
   { ssr: false } // Server-side rendering বন্ধ করুন
 );
+// const CategoryHighlights = dynamic(
+//   () => import('./CategoryHighlights'),
+//   { ssr: false } // Server-side rendering বন্ধ করুন
+// );
+const CategoryHighlights = dynamic(() => import("./CategoryHighlights").then(mod => mod.default), { 
+  ssr: false 
+});
+
 
 
 function Homes() {

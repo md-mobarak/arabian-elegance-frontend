@@ -1,13 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-
+"use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { GiBeveledStar } from "react-icons/gi";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
+
 
 function CategoryHighlights() {
   const categories = [
